@@ -1,0 +1,83 @@
+/* CSS files add styling rules to your content */
+body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #99ccff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  height: 130vh;
+  display: inline-block;
+}
+
+.task {
+  /* background-color: white; */
+  /* object-fit: scale-down; */
+  /* color: black; */
+  padding: 5px; 
+  margin: 4px;
+  /* object-fit: cover; */
+  height: auto;
+  width: auto;
+  display: inline-block;
+}
+
+#div1 {
+  position: relative;
+  top: 60px;
+  left: 50px;
+  right: 0;
+  width: 200px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+.task2 {
+  background-color: white;
+  padding: 5px; 
+  margin: 4px;
+  height: auto;
+  width: auto;
+  display: inline-block;
+}
+
+
+.fill {
+  background-image: url('https://source.unsplash.com/random/150x150');
+  position: relative;
+  height: 150px;
+  width: 150px;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.hold {
+  border: solid 5px #ccc;
+}
+
+.empty {
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  border: solid 3px salmon;
+  background: white;
+}
+
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
