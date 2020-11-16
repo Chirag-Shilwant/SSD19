@@ -1,0 +1,108 @@
+body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.boxx {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 11px;
+  font-size: 150%;
+  height: 89vh;
+  width: 25vh;
+}
+
+#b4{
+  position: relative;
+   top:-684px;
+  left:441px;
+  background-color: #000066;
+  height:8vh;
+  width: 16vh;
+}
+
+#b5{
+  position: relative;
+   top:-684px;
+  left:441px;
+  background-color: #000066;
+  height:16vh;
+  width: 16vh;
+}
+
+#b6{
+  position: relative;
+  top:-684px;
+  left:441px;
+  background-color: #000066;
+  height:12vh;
+  width: 16vh;
+}
+
+#b7{
+  position: relative;
+  top:-350px;
+  left:-300px;
+}
+
+#b8{
+  position: relative;
+  top:-359px;
+  left:1021px;
+  background-color: #000066;
+  height:12vh;
+  width: 16vh;
+}
+
+ .box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 150%;
+  height: 20vh;
+  width: 16vh;
+}
+ 
+
+.task {
+  background-color: pink;
+  color: black;
+  padding: 4px;
+  margin: 4px;
+}
+
+.button1{
+  position: absolute;
+  top : 910px;
+  left: 700px;
+  padding: 13px 20px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999; 
+}
+
+.button1:hover {
+  background-color: #3e8e41
+  }
+
+.button1:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
