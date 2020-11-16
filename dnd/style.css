@@ -1,0 +1,47 @@
+body {
+  margin: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: 800px 400px 800px;
+  grid-template-areas: 
+  "box . dropbox dropbox"
+  "box . dropbox dropbox"
+  "box . dropbox dropbox"
+  ;
+  grid-gap: 5px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+  height: 90vh;
+  width: 50vh;
+}
+
+.task {
+  
+  background-color: pink;
+  color: black;
+  padding: 5px;
+  margin: 4px;
+}
+
+.dropbox{
+
+  background-color: grey;
+  color: white;
+  text-indent: 2%;
+  font-size: x-large;
+  height: 300px;
+  width: 350px;
+  border-left: 10%;
+  border-radius: 5%;
+}
