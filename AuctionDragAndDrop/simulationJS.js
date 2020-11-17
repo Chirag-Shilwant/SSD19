@@ -1,4 +1,4 @@
-var map1 = new Map([["task1" , "b1"], ["task2" , "b1"],["task3" , "b1"], ["task4" , "b1"], ["task5" , "b2"], ["task6" , "b2"], ["task7" , "b2"], ["task8" , "b3"], ["task9" , "b3"], ["task10" , "b3"], ["task11" , "b3"], ["task12", "b4"], ["task13", "b4"],["task14", "b2"], ["task15", "b5"], ["task16", "b5"], ["task17", "b5"], ["task18", "b5"], ["task19", "b6"], ["task20", "b6"], ["task21", "b6"]]); 
+var map1 = new Map([["task1" , "b1"], ["task2" , "b1"],["task3" , "b1"], ["task4" , "b1"], ["task5" , "b2"], ["task6" , "b2"], ["task7" , "b2"], ["task8" , "b3"], ["task9" , "b3"], ["task10" , "b3"], ["task11" , "b3"], ["task11a", "b7"], ["task11b", "b7"], ["task12", "b4"], ["task13", "b4"],["task14", "b2"], ["task15", "b5"], ["task16", "b5"], ["task17", "b5"], ["task18", "b5"], ["task19", "b6"], ["task20", "b6"], ["task21", "b6"], ["task22", "b8"], ["task23", "A1"], ["task24", "A2"],  ["task25", "A4"], ["task26", "A5"], ["task27", "A3"]]); 
 
 var dropTarget = document.querySelector(".wrapper");
 var draggables = document.querySelectorAll(".task");
@@ -40,5 +40,3 @@ dropTarget.addEventListener('drop', function(ev) {
   }
           
 });
-
-
