@@ -1,8 +1,11 @@
 var dropTarget = document.querySelector(".wrapper");
 var draggables = document.querySelectorAll(".task");
+var draggables2 = document.querySelectorAll(".task_arrow");
 
 var map_object = new Map([["task1", "class1"], ["task7", "class1"], ["task9", "class1"], ["task11", "class1"], ["task3", "class3"], ["task4", "class3"], ["task2", "class2"],
- ["task5", "class2"],["task6", "class2"], ["task9", "class2"]])
+ ["task5", "class2"],["task6", "class2"], ["task10", "class2"], ["task11", "class4"], ["task12", "class4"], ["task13", "class5"], ["task14", "class5"], ["task15", "class5"],
+  ["task16", "class1_1"], ["task17", "class1_1"], ["task18", "class1_1"], ["task19", "class5_1"], ["task20", "class2_1"], ["task21", "class4_1"], ["task22", "class3_1"],
+   ["task23", "class2_1"], ["task24", "class5_1"], ["task25", "class6"], ["task26", "class7"], ["task27", "class8"] ])
 /*
 What to Drag - ondragstart and setData()
 Then, specify what should happen when the element is dragged.
@@ -17,6 +20,12 @@ value of the dragged data:
 for(let i = 0; i < draggables.length; i++) {
   draggables[i].addEventListener("dragstart", function (ev) {
      ev.dataTransfer.setData("srcId", ev.target.id);
+  });
+}
+
+for(let i = 0; i < draggables2.length; i++) {
+  draggables2[i].addEventListener("dragstart", function (ev) {
+     ev.dataTransfer.setData("srcId2", ev.target.id);
   });
 }
 
@@ -42,15 +51,19 @@ dropTarget.addEventListener('drop', function(ev) {
   let target = ev.target;
   let droppable  = target.classList.contains('dropbox');
   let srcId = ev.dataTransfer.getData("srcId");
-
-  //document.write(srcId);
-  //document.write(target.getAttribute("id"));
+  let srcId2 = ev.dataTransfer.getData("srcId2");
+  //document.write(srcId2);
+  //document.write(target.id);
   
-  if (droppable && map_object.get(srcId) == target.id) {
+  if (droppable && (map_object.get(srcId) == target.id) ){
     //document.write(document.getElementById(srcId).textContent);
     ev.target.appendChild(document.getElementById(srcId));
+  }
+  else if(droppable && map_object.get(srcId2) == target.id ){
+    ev.target.appendChild(document.getElementById(srcId2));
   }
   else{
     alert("Attribute does not belong to this class");
   }
 });
+
