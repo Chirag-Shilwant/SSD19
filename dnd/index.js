@@ -1,11 +1,14 @@
+
+alertify.confirm("Message<br>dakjfb").set('resizable',true).resizeTo('50%',500).setHeader('Instructions');
+
 var dropTarget = document.querySelector(".wrapper");
 var draggables = document.querySelectorAll(".task");
 var draggables2 = document.querySelectorAll(".task_arrow");
 
 var map_object = new Map([["task1", "class1"], ["task7", "class1"], ["task9", "class1"], ["task11", "class1"], ["task3", "class3"], ["task4", "class3"], ["task2", "class2"],
- ["task5", "class2"],["task6", "class2"], ["task10", "class2"], ["task11", "class4"], ["task12", "class4"], ["task13", "class5"], ["task14", "class5"], ["task15", "class5"],
+ ["task5", "class2"],["task6", "class2"], ["task10", "class3_1"], ["task11", "class4"], ["task12", "class4"], ["task13", "class5"], ["task14", "class5"], ["task15", "class5"],
   ["task16", "class1_1"], ["task17", "class1_1"], ["task18", "class1_1"], ["task19", "class5_1"], ["task20", "class2_1"], ["task21", "class4_1"], ["task22", "class3_1"],
-   ["task23", "class2_1"], ["task24", "class5_1"], ["task25", "class6"], ["task26", "class7"], ["task27", "class8"] ])
+   ["task23", "class3_1"], ["task24", "class5_1"], ["task25", "class6"], ["task26", "class7"], ["task27", "class8"] , ["task28", "class9"] , ["task29", "class2_1"]])
 /*
 What to Drag - ondragstart and setData()
 Then, specify what should happen when the element is dragged.
@@ -26,8 +29,52 @@ for(let i = 0; i < draggables.length; i++) {
 for(let i = 0; i < draggables2.length; i++) {
   draggables2[i].addEventListener("dragstart", function (ev) {
      ev.dataTransfer.setData("srcId2", ev.target.id);
+     
+      
   });
 }
+
+var e = document.getElementById('class1');
+e.onmouseover = function() {
+  document.getElementById('popup1').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup1').style.display = 'none';
+}
+
+var e = document.getElementById('class2');
+e.onmouseover = function() {
+  document.getElementById('popup2').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup2').style.display = 'none';
+}
+
+var e = document.getElementById('class5');
+e.onmouseover = function() {
+  document.getElementById('popup3').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup3').style.display = 'none';
+}
+
+var e = document.getElementById('class4');
+e.onmouseover = function() {
+  document.getElementById('popup4').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup4').style.display = 'none';
+}
+
+var e = document.getElementById('class3');
+e.onmouseover = function() {
+  document.getElementById('popup5').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup5').style.display = 'none';
+}
+
+
 
 /*
 Where to Drop - ondragover
@@ -58,12 +105,29 @@ dropTarget.addEventListener('drop', function(ev) {
   if (droppable && (map_object.get(srcId) == target.id) ){
     //document.write(document.getElementById(srcId).textContent);
     ev.target.appendChild(document.getElementById(srcId));
+    alertify.set('notifier','position', 'top-right');
+    alertify.set('notifier','delay', 2);
+    alertify.success("Good going!!")
   }
   else if(droppable && map_object.get(srcId2) == target.id ){
     ev.target.appendChild(document.getElementById(srcId2));
+    alertify.set('notifier','position', 'top-right');
+    alertify.success("Good going!!");
+    alertify.set('notifier','delay', 2);
+    document.getElementById(srcId2).style.backgroundColor = "whitesmoke";
   }
   else{
-    alert("Attribute does not belong to this class");
+    alertify.set('notifier','position', 'top-right');
+    alertify.error("Hard luck! Try again");
+    alertify.set('notifier','delay', 2);
   }
+
+  if(document.getElementById("temp").children.length == 0)
+  {
+  alertify.alert("Hurray, you did it!!");
+  }
+
 });
 
+
+ 
