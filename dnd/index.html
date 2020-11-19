@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width">
   <title>JavaScript drag & drop tutorial</title>
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/themes/default.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.css">
 </head>
 <body>
   <div class="wrapper">
-    <div class="box">
+    <div id="temp" class="box">
        Attributes
       <div id="task1" class="task" draggable="true">
          Login
@@ -34,9 +39,7 @@
    <div id="task9" class="task" draggable="true">
       Place order from Menu card
    </div>
-   <div id="task10" class="task" draggable="true">
-    Payment
-   </div>
+   
    <div id="task11" class="task" draggable="true">
       Amount
      </div>
@@ -50,37 +53,43 @@
       Account type
      </div>
      <div id="task15" class="task" draggable="true">
-      Online customer ID and PW
+      Transaction credentials
      </div>
 
      Methods
 
      <div id="task16" class="task" draggable="true">
-      view Menu()
+      view menu()
      </div>
      <div id="task17" class="task" draggable="true">
       make payment()
      </div>
      <div id="task18" class="task" draggable="true">
-      Buy Food()
+      buy food()
      </div>
      <div id="task19" class="task" draggable="true">
-      Transfer Amount()
+      transfer amount()
      </div>
      <div id="task20" class="task" draggable="true">
-      Monitor Status of the order()
+      monitor status of the order()
      </div>
      <div id="task21" class="task" draggable="true">
-      check Payment_type()
+      check payment_type()
      </div>
      <div id="task22" class="task" draggable="true">
-      Make Delivery()
+      make delivery()
+     </div>
+     <div id="task10" class="task" draggable="true">
+      create order()
      </div>
      <div id="task23" class="task" draggable="true">
-      Confirm Items()
+      confirm items()
      </div>
      <div id="task24" class="task" draggable="true">
-      Check balance()
+      check balance()
+     </div>
+     <div id="task29" class="task" draggable="true">
+      get restaurant details()
      </div>
 
      Arrow Details
@@ -102,7 +111,29 @@
       <div id= "class1" class="dropbox"> 
           Customer
           <hr>
+          
       </div>
+
+      <div id= "popup1">
+         Description text here
+      </div>
+
+   <div id= "popup2">
+      Description text here
+   </div>
+
+   <div id= "popup3">
+      Description text here
+   </div>
+
+   <div id= "popup4">
+      Description text here
+   </div>
+
+   <div id= "popup5">
+      Description text here
+   </div>
+      
       <div id= "class1_1" class="dropbox"> 
          
       </div>
@@ -137,7 +168,7 @@
          
 </div>
 <span id="arrow_design1"> &#10141; </span>
-<span id="arrow_design2"> &#10141;  </span>
+<span id="arrow_design2"> &#8701;  </span>
 <div id="arrow_design3"> 
    </div>
 <div id="arrow_design4">  </div>
@@ -156,4 +187,5 @@
   </div>
 </body>
 <script src="index.js"></script>
+
 </html>
