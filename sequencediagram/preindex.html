@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+<head>
+    <title>Software Engineering Virtual Lab, IIIT Hyderabad</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Virtual Lab, VLabs, Software Engineering, UML, Use case diagrams, Django">
+    
+    <link rel="shortcut icon" type="image/png" href="/se/isad_static/isad/images/folder_labs_32.png">
+
+    <link href="/se/isad_static/isad/css/isad.css" rel="stylesheet" type="text/css">
+    <link href="/se/isad_static/isad/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+    <link rel="stylesheet" type="text/css" href="/se/isad_static/isad/ddtabmenufiles/glowtabs.css">
+
+
+    <link type="text/css" rel="stylesheet" href="/se/isad_static/isad/lib/SyntaxHighlighter/styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="/se/isad_static/isad/lib/SyntaxHighlighter/styles/shThemeDefault.css"/>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+            
+<style type="text/css">
+    div#title {
+        padding-bottom: 5px;
+    }
+    div#title h1 {
+        color: #0033CC;
+    }
+    div#contents {
+
+    }
+</style>
+
+
+
+
+<div id="contents" class="font-normal">
+
+<h2>Sequence diagram</h2>
+<p>It represents the behavioral aspects of a system<a href="/isad/isad/7/references/">[1]</a>. Sequence diagram shows the interactions between the objects<a href="/isad/isad/7/references/">[1]</a> by means of passing messages from one object to another with respect to time<a href="/isad/isad/7/references/">[2]</a> in a system.</p>
+
+<h2>Elements in sequence diagram</h2>
+<p>Sequence diagram contains the objects of a system and their life-line bar and the messages passing between them.</p>
+
+<h2>Object</h2>
+<p>Objects appear at the top portion of sequence diagram<a href="/isad/isad/7/references/">[1]</a>. Object is shown in a rectangle box. Name of object precedes a colon ‘:’ and the class name, from which the object is instantiated.  The whole string is underlined and appears in a rectangle box. Also, we may use only class name or only instance name.</p>
+<!--
+<p><strong>Example</strong><center><img class="diagram" src="/se/isad_static/isad/images/theory/07/exp78.png" alt="State"> Figure-08: </center></p>
+-->
+<p>Objects which are created at the time of execution of use case and are involved in message passing , are appear in diagram, at the point of their creation<a href="/isad/isad/7/references/">[1]</a>.</p>
+
+<h2>Life-line bar</h2>
+<p>A down-ward vertical line from object-box is shown as the life-line of the object. A rectangle bar on life-line indicates that it is active at that point of time<a href="/isad/isad/7/references/">[1]</a>.</p>
+
+<h2>Messages</h2>
+Messages are shown as an arrow from the life-line of sender object to the life-line of receiver object and labeled with the message name. Chronological order of the messages passing throughout the objects’ life-line show the sequence in which they occur<a href="/isad/isad/7/references/">[1]</a> . There may exist some different types of messages :
+<ul>
+<li><strong>Synchronous messages:</strong>Receiver start processing the message after receiving it and sender needs to wait until it is made<a href="/isad/isad/7/references/">[iii]</a>. A straight arrow with close and fill arrow-head from sender life-line bar to receiver end, represent a synchronous message<a href="/isad/isad/7/references/">[iii]</a>.</li>
+<li><strong>Asynchronous messages:</strong>For asynchronous message sender needs not to wait for the receiver to process the message<a href="/isad/isad/7/references/">[iv]</a>. A function call that creates thread can be represented as an asynchronous message in sequence diagram<a href="/isad/isad/7/references/">[iv]</a>. A straight arrow with open arrow-head from sender life-line bar to receiver end, represent an asynchronous message<a href="/isad/isad/7/references/">[iii]</a>.</li>
+<li><strong>Return message:</strong>For a function call when we need to return a value to the object, from which it was called, then we use return message. But, it is optional, and we are using it when we are going to model our system in much detail. A dashed arrow with open arrow-head from sender life-line bar to receiver end, represent that message.</li>
+<li><strong>Response message:</strong>One object can send a message to self<a href="/isad/isad/7/references/">[iv]</a>.  We use this message when we need to show the interaction between the same object.</li>
+<center><img class="diagram" src="/se/isad_static/isad/images/theory/07/exp79.png" alt="State"> Figure-08 </center>
+
+
+
+
+
+</div>
+
+<div class="hidden">
+    <input type="hidden" id="h_tid" value="7" />
+    <input type="hidden" id="h_sbase" value="" />
+</div>
+
+<div class="clear"></div>
+
+
+
+        </div>
+
+        <div class="icons-toolbar">
+                <img src="/se/isad_static/isad/images/new/icons/page_toolbar/format_font_size_less_32x32_blue.png"
+                     alt="Decrease font size" title="Decrease font size" class="decrease-font-size" style="display: block;">
+                <img src="/se/isad_static/isad/images/new/icons/page_toolbar/format_font_size_more_32x32_blue.png"
+                     alt="Increase font size" title="Increase font size" class="increase-font-size" style="padding: 0; display: block;">
+                <img src="/se/isad_static/isad/images/new/icons/page_toolbar/blue_experiment32.png"
+                    alt="List of experiments" title="List of experiments" class="experiments">
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="experiment-list-popup" style="display: none;"><ol><li><a href="/se/1/theory/">Identifying the requirements from problem statements</a></li><li><a href="/se/2/theory/">Estimation of project metrics</a></li><li><a href="/se/3/theory/">Modeling UML use case diagram &amp; capturing use case scenarios</a></li><li><a href="/se/4/theory/">E-R modeling from the problem statements</a></li><li><a href="/se/5/theory/">Identifying domain classes from the problem statements</a></li><li><a href="/se/6/theory/">Statechart and activity modeling</a></li><li><a href="/se/7/theory/">Modeling UML class diagram &amp; sequence diagrams</a></li><li><a href="/se/8/theory/">Modeling DFD</a></li><li><a href="/se/9/theory/">Estimation of test coverage metrics &amp; structural complexity</a></li><li><a href="/se/10/theory/">Designing test suite</a></li></ol></div>
+
+
+<div  id="top_arrow" class="topArrow">
+    <img src="/se/isad_static/isad/images/arrow_up2.png" alt="Top"  align="right">
+</div>
+
+<!-- Footer -->
+<div class="footer" style="position: relative; height: 90px;">
+	<img src="/se/isad_static/isad/images/new/footer-curve.jpg" width="1024" height="31" alt="">
+
+
+	<a href="http://www.djangoproject.com/" style="border: 0px solid red; width: 120px; float: left; padding-left: 50px; padding-top: 15px;">
+	<img src="http://www.djangoproject.com/m/img/badges/djangomade124x25.gif"
+		border="0" alt="A Django powered site." title="A Django powered site."
+		style="float: right;">
+	</a>
+
+
+	<div style="border: 0px solid red; top: -5px; width: 300px; float: right; text-align: left; padding-right: 80px;">
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"
+			style="float: left;">
+			<img alt="Creative Commons License" style="border-width:0;
+				margin: 0px; margin-right: 5px; float: left; clear: right;"
+				src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+		</a>
+        Except otherwise noted, content on this site is licensed under the <a rel="license"
+		href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC-BY-NC-SA-3.0
+		License</a>. See <a href="/license/">details</a>.
+	</div>
+
+
+	<div style="border: 0px solid red; width: 450px; float: left; border-right: 0.1em solid #2EABD1;">
+	<div class="tos" >
+		<a href="http://virtual-labs.ac.in/nmeict/" target="_blank" class="tos">Sponsored by MHRD (NME-ICT)</a>
+		<span class="tos">&nbsp; | &nbsp;</span>
+		<a href="http://virtual-labs.ac.in/licensing/" target="_blank" class="tos">Licensing Terms</a>
+		<span class="tos">&nbsp; | &nbsp;</span>
+		<a href="http://vlab.co.in/disclaimer.php" target="_blank" class="tos">Disclaimer</a>
+	</div>
+
+	<div class="copyright">Copyright &copy; 2010-2016 IIT Kharagpur</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/se/isad_static/isad/js/jquery.min.js"></script>
+<script src="/se/isad_static/django_js_reverse/js/reverse.js"></script>
+<script async type="text/javascript" src="/se/isad_static/isad/js/common.js"></script>
+<script async type="text/javascript" src="/se/isad_static/isad/ddtabmenufiles/ddtabmenu.js"></script>
+
+<!-- For syntax highlighting -->
+<script async type="text/javascript" src="/se/isad_static/isad/lib/SyntaxHighlighter/scripts/shCore.js">
+</script>
+<script async type="text/javascript" src="/se/isad_static/isad/lib/SyntaxHighlighter/scripts/shBrushCpp.js"></script>
+<script async type="text/javascript" src="/se/isad_static/isad/lib/SyntaxHighlighter/scripts/shBrushBash.js"></script>
+<script async type="text/javascript" src="/se/isad_static/isad/lib/SyntaxHighlighter/scripts/shBrushJScript.js"></script>
+
+<script async type="text/javascript" src="/se/isad_static/isad/lib/center-plugin_1.0.1.js"></script>
+
+ 
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5706a4325562c185"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-71919978-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

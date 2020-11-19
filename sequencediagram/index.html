@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<HTML lang="en">
+
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Sequence Diagram</title>
+
+    <script src="index.js"></script>
+    <script src="libs/lz-string.min.js"></script>
+    <script src="libs/canvas2svg.min.js"></script>
+    <link rel="stylesheet" href="libs/codemirror.css">
+    <script src="libs/codemirror.min.js"></script>
+    <link rel="stylesheet" href="libs/show-hint.css">
+    <script src="libs/show-hint.js"></script>
+    <script src="libs/active-line.js"></script>
+    <link rel="stylesheet" href="libs/dialog.css">
+    <script src="libs/dialog.js"></script>
+    <script src="libs/searchcursor.js"></script>
+    <script src="libs/search.js"></script>
+    <script src="libs/annotatescrollbar.js"></script>
+    <link rel="stylesheet" href="libs/matchesonscrollbar.css">
+    <script src="libs/matchesonscrollbar.js"></script>
+    <script src="libs/jump-to-line.js"></script>
+    <script src="libs/rbush.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css?v=9.1.0">
+    <link rel="stylesheet" href="print.css?v=9.1.0" type="text/css" media="print">
+    <script src="all.min.js?v=9.1.0"></script>
+
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
+    <script src="initOneDrive.js"></script>
+    <script src="https://js.live.net/v7.2/OneDrive.js" defer async></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onGooglePlatform" defer async></script>
+</head>
+
+<body>
+    <div id="top">
+        <div id="activeFile">
+            <span id="activeFileStatus"><label for="activeFileNameChange"></label><input id="activeFileNameChange"><span
+                id="activeFileNameStatus">Untitled</span> [<span id="activeFileStorageStatus">Not saved</span>]</span>
+        </div>
+        <!--lic-->
+    </div>
+    <div id="topRight">
+        <div>
+
+            <div class="dropdown">
+                <div id="menuButtonView" class="menuButton">View</div>
+                <div id="menuView" class="menuContent">
+                    <div id="menuViewPresentationMode" class="menuRow menuRowHighlight">
+                        <span id="presentationModeCheckbox"></span>&nbsp;Presentation Mode (Ctrl+M)
+                    </div>
+                    <div id="menuViewParticipantOverlay" class="menuRow menuRowHighlight">
+                        <span id="participantOverlayCheckbox"></span>&nbsp;Participant Overlay
+                    </div>
+                    <div id="menuViewReadOnlyPresentationMode" class="menuRow menuRowHighlight" title="check this to make the diagram read only in Presentation Mode">
+                        <span id="readOnlyPresentationModeCheckbox"></span>&nbsp;Read Only Presentation Mode
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div id="menuButtonSettings" class="menuButton">Settings</div>
+                <div id="menuSettings" class="menuContent">
+                    <div class="menuRow">
+                        <fieldset>
+                            <legend>Default (Ctrl+S / Ctrl+O) Storage</legend>
+                            <div id="menuSettingsDefaultStorageGoogleDrive" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioGoogleDrive"></span>&nbsp;Google Drive
+                            </div>
+                            <div id="menuSettingsDefaultStorageGoogleDriveRootFolder" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioGoogleDriveRootFolder"></span>&nbsp;Google Drive Root Folder
+                            </div>
+                            <div id="menuSettingsDefaultStorageOneDrive" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioOneDrive"></span>&nbsp;OneDrive
+                            </div>
+                            <div id="menuSettingsDefaultStorageWebStorage" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioWebStorage"></span>&nbsp;Web Storage (localStorage)
+                            </div>
+                            <div id="menuSettingsDefaultStorageLocalDisk" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioLocalDisk"></span>&nbsp;Local Disk
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="menuSettingsAlertForUnsavedChanges" class="menuRow menuRowHighlight">
+                        <span id="alertForUnsavedChangesCheckbox"></span>&nbsp;Alert for unsaved changes
+                    </div>
+                    <div id="menuSettingsAutosave" class="menuRow menuRowHighlight">
+                        <span id="autosaveCheckbox"></span>&nbsp;Autosave every 10 min if there are changes
+                    </div>
+                    <div id="menuSettingsSynchronizeFilenameWithTitle" class="menuRow menuRowHighlight">
+                        <span id="synchronizeFilenameWithTitleCheckbox"></span>&nbsp;Synchronize filename with title (legacy behavior)
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="dropdown">
+                <div id="menuButtonHelp" class="menuButton">Help</div>
+                <div id="menuHelp" class="menuContent">
+                    <div class="menuRow menuRowHighlight">
+                        <a href="instructions.html" target="_blank">Instructions (new window)</a>
+                    </div>
+                    <div id="menuHelpInstructionsModalPopup" class="menuRow menuRowHighlight">
+                        Instructions (modal popup)
+                    </div>
+                    <div id="menuHelpAbout" class="menuRow menuRowHighlight">
+                        About (modal popup)
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="dropdown">
+                <div id="menuButtonLegacyVersions" class="menuButton">Legacy Versions</div>
+                <div id="menuLegacyVersions" class="menuContent">
+                    <div class="menuRow menuRowHighlight">
+                        <a href="legacy850/index.html" target="_blank">Version 8.5.0 (new window)</a>
+                    </div>
+                    <div class="menuRow menuRowHighlight">
+                        <a href="legacy761/index.html" target="_blank">Version 7.6.1 (new window)</a>
+                    </div>
+                    <div class="menuRow menuRowHighlight">
+                        <a href="legacy651/index.html" target="_blank">Version 6.5.1 (new window)</a>
+                    </div>
+                    <div class="menuRow menuRowHighlight">
+                        <a href="legacy502/index.html" target="_blank">Version 5.0.2 (new window)</a>
+                    </div>
+                    <div class="menuRow menuRowHighlight">
+                        <a href="legacy471/index.html" target="_blank">Version 4.7.1 (new window)</a>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="dropdown">
+                &nbsp;
+            </div>
+        </div>
+
+        <div id="notification"></div>
+    </div>
+
+    <div id="actions">
+        <img id="newDiagram" class="actionButton" src="assets/new.svg" title="new diagram">
+        <img id="openButton" class="actionButton" src="assets/open.svg" title="open source text">
+        <img id="saveButton" class="actionButton" src="assets/save.svg" title="save source text">
+        <img id="exportButton" class="actionButton" src="assets/export01.svg" title="export diagram">
+        <hr class="separator">
+        <img id="addParticipant" class="actionButton" src="assets/participant01.svg" title="add participant">
+        <img id="zoomIn" class="actionButton" src="assets/zoomin.svg" title="zoom in">
+        <img id="zoomOut" class="actionButton" src="assets/zoomout.svg" title="zoom out">
+    </div>
+
+    <div id="source">
+        <div id="handleRight"></div>
+    </div>
+    <div id="handleWrapper">
+        <div id="handle">≡</div>
+    </div>
+
+    <canvas id="diagramCanvas" class="canvas" width="300" height="100">
+    Device not supported, use firefox or chrome or safari or ie 10+
+</canvas>
+    <canvas id="participantCanvas" class="canvas" width="500" height="100"></canvas>
+    <div id="interactionCanvasWrapper">
+        <canvas id="interactionCanvas" class="canvas" width="300" height="100">
+        Device not supported, use firefox or chrome or safari or ie 10+
+    </canvas>
+    </div>
+
+    <div id="entryEditor">
+        <div id="entryEditorTop">&nbsp;<span id="entryEditorCloseIcon" title="close">✕</span></div>
+        <div id="participantEdit">
+            Participant alias<br>
+            <input id="participantAliasInput"><br><br> Participant long name<br>
+        </div>
+        <textarea id="entryEditorTextArea"></textarea>
+        <div><span class="popupDialogButtons">
+        <button id="entryEditorCancel">Cancel</button>
+        <button id="entryEditorUpdate">Update (Ctrl + Enter)</button>
+    </span></div>
+    </div>
+
+    <div id="cover"></div>
+
+    <div id="openSourceMenu" class="openSaveMenu">
+        <br>
+        <span class="openSaveLabel">OneDrive</span><br>
+        <button id="openButtonOneDrive">Open</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Web Storage (localStorage)</span><br>
+        <button id="openButtonWebStorage">Open</button>
+        <br><br>
+        <span class="openSaveLabel">Local Disk</span><br>
+        <form>
+            <input id="openButtonLocalDisk" type="file">
+        </form>
+    </div>
+
+    <div id="saveSourceMenu" class="openSaveMenu">
+        <span class="openSaveLabel">File Name</span><br>
+        <label for="fileName"></label><input id="fileName" type="text" size="40"><span class="smallText">.txt</span>
+        <br>
+        <br>
+        <span class="openSaveLabel">Google Drive</span><br>
+        <button id="saveButtonGoogleDrive">Save</button> &nbsp;&nbsp;
+        <button id="saveInRootButtonGoogleDrive">Save in Root Folder</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">OneDrive</span><br>
+        <button id="saveButtonOneDrive">Save</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Web Storage (localStorage)</span><br>
+        <button id="saveButtonWebStorage">Save</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Local Disk (download folder)</span><br>
+        <button id="saveButtonLocalDisk">Save</button>
+    </div>
+
+    <div id="exportDiagramMenu" class="openSaveMenu">
+        <span class="openSaveLabel">Export Name</span><br>
+        <label for="fileName"></label><input id="fileNameExport" type="text" size="40"><span class="smallText">.xyz</span>
+        <br>
+        <br>
+        <span class="openSaveLabel">SVG Image File (vector based image)</span><br>
+        <button id="exportButtonSvg">Export</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">PNG Image File (at current zoom level)</span><br>
+        <a href="#" id="exportButtonPngLink"><button id="exportButtonPng">Export</button></a>
+        <br>
+        <br>
+        <span class="openSaveLabel">PNG Image for Copy / Paste (at current zoom level)</span><br>
+        <button id="exportButtonCopyPaste">Render</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">URL to Share</span><br>
+        <button id="exportButtonUrl">Create</button>
+    </div>
+
+    <div class="popupDialog" id="imageSavePopup">
+        <div class="popupHead"><span class="popupTitle">Export Diagram</span><span class="popupCloseIcon" title="close">✕</span>
+        </div>
+        <div class="popupDialogInner">
+            <p>Right click and copy image or Save as...</p>
+            <p>&nbsp;</p>
+            <div id="imageDiv">
+            </div>
+        </div>
+    </div>
+
+    <div class="popupDialog" id="infoPopup">
+        <div class="popupHead"><span class="popupTitle">About</span><span class="popupCloseIcon" title="close">✕</span></div>
+        <div class="popupDialogInner">
+            <p class="infoText">SequenceDiagram.org is an online tool / software for creating UML sequence diagrams. Founded in 2014 with the purpose to improve the efficiency when creating and working with sequence diagrams by combining text notation scripting and drawing
+                by clicking and dragging in the same model.</p>
+
+            <p class="infoText">All parsing, processing, and drawing is done client side. The benefit of this is that SequenceDiagram.org is fast and convenient to work with; it also doesn’t transfer your diagram data over the Internet like many other sequence diagram tools
+                on the market. This also means that it is possible to work with the tool offline.</p>
+
+            <p class="infoText">The tool is developed, maintained, and used by people who create a lot of sequence diagrams in their daily work. If you have any question / comments / suggestions / bugs please contact info@sequencediagram.org. The more feedback we get the
+                better we can prioritize.</p><br>
+
+            <h1 class="infoHeadline">FAQ</h1>
+            <h2 class="infoFAQ">Privacy and data protection information</h2>
+            <p class="infoText">The tool itself does not collect data, however services it relies on such as Content Delivery Network, hosting, and cloud storage does. See <a href="privacypolicy.txt">privacy policy</a> for details.</p><br>
+
+            <h2 class="infoFAQ">Are diagrams/scripts created using SequenceDiagram.org subject to any license?</h2>
+            <p class="infoText">No license is imposed by SequenceDiagram.org on the generated output. However, like with all images containing text, the fonts used might. The default font used in diagrams is the default sans-serif font selected by your browser. You can specify
+                a different font using the fontfamily keyword, see help for more information. See <a href="LICENSE.txt">LICENSE</a> for details.</p><br>
+
+            <h2 class="infoFAQ">How do I generate a PDF of my sequence diagram?</h2>
+            <p class="infoText">Zoom to a chosen level in the editor and Print to PDF from your browser. The print css makes sure to only show the diagram on the page.
+            </p><br>
+
+            <h2 class="infoFAQ">Are there any example sequence diagrams?</h2>
+            <p class="infoText">Yes, clicking the help menu and selecting "Instructions" will show examples of all possible diagram elements. A copy icon is available for copying the text notation.</p><br>
+
+            <h2 class="infoFAQ">Is the codebase of SequenceDiagram.org open source?</h2>
+            <p class="infoText">No, the codebase is currently not available under any open source license</p><br>
+
+            <h2 class="infoFAQ">Can I run the SequenceDiagram.org tool in my company's private network (on-premises)?</h2>
+            <p class="infoText">Yes, by donating 400$ you are licensed to run the SequenceDiagram.org tool and its REST-like API inside your company's network (enterprise license). You are also eligible to receive any new published versions of the software for the duration
+                of 1 year from the donation date by request. Your donation is highly appreciated and allows us to keep SequenceDiagram.org online and free for everyone to use. Please contact <a href="mailto:info@sequencediagram.org">info@sequencediagram.org</a>                for any questions.<br><br> The software is delivered in three formats:</p>
+            <ul>
+                <li>A Node JS application with the Sequencediagram.org tool and a REST-like API for integration with other services, see <a href="README.txt">README.txt</a> for details
+                </li>
+                <li>A war file with the Sequencediagram.org tool for deployment in a Java Servlet Container such as Tomcat, Jboss, Wildfly, Jetty, etc</li>
+                <li>A zip file with the Sequencediagram.org tool for static web page hosting inside the DocumentRoot of a web server such as Apache, IIS, etc, or static on any cloud provider
+                </li>
+            </ul>
+            <br>
+
+            <h2 class="infoFAQ">What libraries are used by SequenceDiagram.org?</h2>
+            <p class="infoText">
+                <ul>
+                    <li><a href="https://github.com/pieroxy/lz-string">lz-string</a> is used to create URLs for sharing sequence diagrams.
+                        <a href="libs/lz-string-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://github.com/gliffy/canvas2svg">Canvas2Svg</a> is used to export the diagram into SVG file format.
+                        <a href="libs/canvas2svg-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://codemirror.net/">CodeMirror</a> is used as the text editor.
+                        <a href="libs/codemirror-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="http://fontawesome.io">Font Awesome</a> is used to provide icons for the icon participants.
+                        <a href="libs/fontawesome-webfont-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://materialdesignicons.com">Material Design Icons from the Community</a> is used to provide icons for the icon participants.
+                        <a href="libs/materialdesignicons-webfont-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://github.com/google/material-design-icons">Material Design icons by Google</a> (included in materialdesignicons.com collection) is used to provide icons for the icon participants.
+                        <a href="libs/materialdesigniconsbygoogle-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://fontawesome.com">Font Awesome 5 Free</a> is used to provide icons for the icon participants.
+                        <a href="libs/fontawesome5free-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://github.com/mourner/rbush">RBush</a> is used for collision detection calculations for onmousemove events.
+                        <a href="libs/rbush-LICENSE.txt">LICENSE</a></li>
+                    <li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js">MSAL.js</a> from Microsoft is used for authentication towards Microsoft services.
+                    </li>
+                    <li><a href="https://docs.microsoft.com/en-us/onedrive/developer/controls/file-pickers/js-v72/?view=odsp-graph-online">OneDrive.js</a> from Microsoft is used for file picker for OneDrive and SharePoint.
+                    </li>
+                    <li><a href="https://developers.google.com/identity/sign-in/web/sign-in">platform.js</a> from Google is used for authentication towards Google services and file picker for Google Drive and Team Drives.
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class="popupDialog" id="shareUrlPopup">
+        <div class="popupHead"><span class="popupTitle">Share Link</span><span class="popupCloseIcon" title="close">✕</span></div>
+        <div class="popupDialogInner">
+            <p>Copy the above Titled link or Raw link and share it</p>
+            <p>&nbsp;</p>
+            <table>
+                <tr>
+                    <td>Titled link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkCompressed" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>Raw link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkCompressed" class="rawLink"></textarea></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Presentation Mode Titled Link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkPresentationModeReadOnlyCompressed" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>Presentation Mode Raw Link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkPresentationModeReadOnlyCompressed" class="rawLink"></textarea></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>URI encoded Titled link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkUriEncoded" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>URI encoded Raw link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkUriEncoded" class="rawLink"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="popupDialog" id="webStoragePopup">
+        <div class="popupHead"><span class="popupTitle">Web Storage (localStorage)</span><span class="popupCloseIcon" title="close">✕</span></div>
+        <div class="popupDialogInner">
+            <table id="webStorageDiagramTable">
+                <thead>
+                    <tr>
+                        <th id="toggleWebStorageSelection">☐</th>
+                        <th>Name</th>
+                        <th>Modified</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody id="webStorageDiagramTableTBody">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="popupDialogBottom"><span class="popupDialogButtons">
+        <button id="webStoragePopupCancel">Cancel</button>
+        <button id="webStorageDelete">Delete</button>
+        <button id="webStorageOpen">Open</button>
+    </span></div>
+    </div>
+
+    <div class="popupDialog" id="instructionsPopup">
+        <div class="popupHead">
+            <span class="popupTitle">Instructions</span><span class="popupCloseIcon" title="close">✕</span>
+        </div>
+        <div class="popupDialogInnerIFrame">
+            <iframe id="instructionsIFrame" frameborder="0"></iframe>
+        </div>
+    </div>
+    <!-- width: 300px; -->
+    
+    <div class="image-map-container">
+    <img src = "diagram.png" width='480px' height='480px' alt="" usemap="#image-map"> 
+    <div class="map-selector"></div>
+    </div>
+
+    <map name="image-map" id="image-map">
+    	<area alt="" title="participant PurchaserAgent" shape="rect" coords="0,0,91,34" /> <!-- pa -->
+        <area alt="" title="" href="#" shape="rect" coords="188,0,322,34" /> <!-- fa-->
+        <area alt="" title="" href="#" shape="rect" coords="390,0,480,34" /> <!-- sa-->
+        <area alt="" title="PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)" href="#" shape="rect" coords="76,60,223,75" /> <!-- bidreq-->
+        <area alt="" title="" href="#" shape="rect" coords="274,69,411,79" /> <!-- get(l,c)-->
+        <area alt="" title="" href="#" shape="rect" coords="327,86,357,99" /> <!-- 1st return-->
+        <area alt="" title="" href="#" shape="rect" coords="258,106,439,176" /> <!-- if curr<bid note-->
+        <area alt="" title="" href="#" shape="rect" coords="47,182,99,210" /><!--b.loop -->
+        <area alt="" title="" href="#" shape="rect" coords="224,205,255,237" /> <!-- timer-->
+        
+        <area alt="" title="" href="#" shape="rect" coords="254,216,293,232" /><!--self call -->
+        <area alt="" title="" href="#" shape="rect" coords="308,191,412,268" /><!--if br pa -->
+        <area alt="" title="" href="#" shape="rect" coords="347,362,418,403" /><!-- pa if else -->
+        <area alt="" title="" href="#" shape="rect" coords="117,322,174,340" /><!-- -->
+        <area alt="" title="" href="#" shape="rect" coords="116,413,176,429" /><!-- -->
+        <area alt="" title="" href="#" shape="rect" coords="286,465,408,478" /><!-- -->
+    </map>
+
+
+
+    <!-- <input type="text" value="123" id="input1">
+
+<span id="span1">This is span1</span>
+
+<button onclick="myFunction()">Click me</button>
+
+<script>
+
+function myFunction(){
+
+var inputValue=document.getElementById('input1').value;
+
+if(inputValue==111){
+
+document.getElementById('span1').innerHTML='This is changed'
+
+}
+
+}
+
+</script> -->
+
+<div class="fixed2">
+    <iframe width='500px' height='380px' src="https://iiitaphyd-my.sharepoint.com/personal/anshul_kakraniya_students_iiit_ac_in/_layouts/15/Doc.aspx?sourcedoc={d49a1a1a-a861-4531-9d44-5d1cb1bbd583}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+</div>
+
+<!-- <div class="fixed2">
+    <iframe width='500px' height='380px' src='https://view.officeapps.live.com/op/embed.aspx?src=[seqd.pptx]'></iframe>
+</div> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+    <script src="initMain.js"></script>
+    
+</body>
+
+</html>
+<!-- title Auction System
+participant PurchaserAgent
+participant FacilitatorAgent
+participant SellerAgent
+
+PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)
+FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)
+FacilitatorAgent<--SellerAgent:return
+note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice
+loop Bidding Loop
+box over FacilitatorAgent:Timer 5 Sec
+FacilitatorAgent->FacilitatorAgent:Self call
+note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer
+end
+alt case PA ID && Flag
+PurchaserAgent<--FacilitatorAgent:if yes return sold
+else !(case PA ID && Flag)
+PurchaserAgent<--FacilitatorAgent:return unsold
+end
+FacilitatorAgent->SellerAgent:return CurrentPrice, Status  -->
