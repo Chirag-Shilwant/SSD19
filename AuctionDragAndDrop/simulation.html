@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width">
   <title>JavaScript drag & drop tutorial</title>
   <link rel="stylesheet" href="simulationStyle.css">	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.min.css"/>
 </head>
 <body>
   <div class="wrapper">
@@ -59,13 +61,13 @@
        <div id="task11c" class="task" draggable="true">
          BuyerUsername
       </div>
-      <div id="task11c" class="task" draggable="true">
+      <div id="task11d" class="task" draggable="true">
          SellerUsername
       </div>
-      <div id="task11c" class="task" draggable="true">
+      <div id="task11e" class="task" draggable="true">
          BuyerPassword
       </div>
-      <div id="task11c" class="task" draggable="true">
+      <div id="task11f" class="task" draggable="true">
          SellerPassword
       </div>
       <hr/>
@@ -134,37 +136,37 @@
       </div>  
     </div>
     
-    <div class="box" id="b1">
+    <div class="box" id="b1" title="User is a person who can be either a Seller who creates an auction of his/her product or a Bidder willing to participate in a bid. You have to drop attributes here.">
     User   
     </div>
     
-    <div class="box" id="b2">
+    <div class="box" id="b2" title="A Bidder(a potential Buyer) bids on a product with a amount/value. You have to drop attributes here.">
     Bid
     </div>
     
-    <div class="box" id="b3">
+    <div class="box" id="b3" title="A Bidder(a potential Buyer) bids on a product with a amount/value. You have to drop attributes here.">
     Auction
     </div>
     
     
     
-    <div class="box" id="b4">
+    <div class="box" id="b4" title="You have to drop methods/objects here">
     <!-- User ke niche wala-->
     </div>
     
-    <div class="box" id="b5">
+    <div class="box" id="b5" title="You have to drop methods/objects here">
     <!-- Bid ke niche wala-->
     </div>
     
-    <div class="box" id="b6">
+    <div class="box" id="b6" title="You have to drop methods/objects here">
     <!-- Auction ke niche wala-->
     </div>
     
-    <div class="box" id="b7">
+    <div class="box" id="b7" title="Admin is an administrator who manages the entire Auction System Portal. You have to drop attributes here.">
     Admin
     </div>
     
-    <div class="box" id="b8">
+    <div class="box" id="b8" title="You have to drop methods/objects here">
     <!-- Admin ke niche wala-->
     </div>
    
@@ -189,38 +191,39 @@
     
     </div>
     
-   <div class="box" id="b9">
+   <div class="box" id="b9" title="A Bidder(a potential Buyer) is a person who bids on a product with a amount/value. You have to drop attributes here.">
     Buyer
     </div>
     
    
     
-    <div class="box" id="b10">
+    <div class="box" id="b10" title="A Seller is a person who creates an auction of his/her product. You have to drop attributes here.">
     Seller
     </div>
     
-    <span id="arrow">&#8679;</span>
+    <span id="arrow" title="Inheritence or Generalization">&#8679;</span>
     
-     <div class="box" id="b9a">
+     <div class="box" id="b9a" title="You have to drop methods/objects here">
     <!-- Buyer ke niche wala-->
     </div>
     
-    <div class="box" id="b10a">
+    <div class="box" id="b10a" title="You have to drop methods/objects here">
     <!-- Seller ke niche wala-->
     </div>  
     
-	<hr class="line">    <!-- User aur Bid ke bich wala-->
-	<hr class="line1">   <!-- Bid aur auction ke bich wala-->
-	<hr class="line2">    <!-- Admin aur auction ke bich wala-->
-	<hr class="line3">	<!-- Admin aur Bid ke bich wala-->
-	<hr class="line4">	<!-- Admin aur User ke bich wala-->
-	<hr class="line5">	<!-- buyer aur seller ke bich wala horizontal-->
-	<hr class="line6">	<!-- buyer aur seller ke bich wala left vertical-->
-	<hr class="line7">	<!-- buyer aur seller ke bich wala right vertical-->
+	<hr class="line"  title="Simple Association">    <!-- User aur Bid ke bich wala-->
+	<hr class="line1" title="Simple Association">   <!-- Bid aur auction ke bich wala-->
+	<hr class="line2" title="Simple Association">   <!-- Admin aur auction ke bich wala-->
+	<hr class="line3" title="Simple Association">   <!-- Admin aur Bid ke bich wala-->
+	<hr class="line4" title="Simple Association">   <!-- Admin aur User ke bich wala-->
+	<hr class="line5" title="Inheritence or Generalization">   <!-- buyer aur seller ke bich wala horizontal-->
+	<hr class="line6" title="Inheritence or Generalization">   <!-- buyer aur seller ke bich wala left vertical-->
+	<hr class="line7" title="Inheritence or Generalization">   <!-- buyer aur seller ke bich wala right vertical-->
 	
   </div>
   <button class = "button1" onClick="window.location.reload();">Start Again</button>
-
+  <button class = "button2">Done</button>
+	
 </body>
 <script src="simulationJS.js"></script>
 </html>
