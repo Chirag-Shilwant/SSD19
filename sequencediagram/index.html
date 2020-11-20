@@ -3,9 +3,10 @@
 
 <HEAD>
     <meta charset="UTF-8">
-    <title>Sequence Diagram</title>
+    <title>SequenceDiagram</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <script src="index.js"></script>
     <script src="libs/lz-string.min.js"></script>
     <script src="libs/canvas2svg.min.js"></script>
     <link rel="stylesheet" href="libs/codemirror.css">
@@ -35,6 +36,7 @@
 
 <body>
     <div id="top">
+        <img id="logo" alt="SequenceDiagram" src="assets/logo24x24.png">
         <div id="activeFile">
             <span id="activeFileStatus"><label for="activeFileNameChange"></label><input id="activeFileNameChange"><span
                 id="activeFileNameStatus">Untitled</span> [<span id="activeFileStorageStatus">Not saved</span>]</span>
@@ -94,7 +96,6 @@
                 </div>
             </div>
 
-
             <div class="dropdown">
                 <div id="menuButtonHelp" class="menuButton">Help</div>
                 <div id="menuHelp" class="menuContent">
@@ -109,27 +110,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="dropdown">
-                <div id="menuButtonLegacyVersions" class="menuButton">Legacy Versions</div>
-                <div id="menuLegacyVersions" class="menuContent">
-                    <div class="menuRow menuRowHighlight">
-                        <a href="legacy850/index.html" target="_blank">Version 8.5.0 (new window)</a>
-                    </div>
-                    <div class="menuRow menuRowHighlight">
-                        <a href="legacy761/index.html" target="_blank">Version 7.6.1 (new window)</a>
-                    </div>
-                    <div class="menuRow menuRowHighlight">
-                        <a href="legacy651/index.html" target="_blank">Version 6.5.1 (new window)</a>
-                    </div>
-                    <div class="menuRow menuRowHighlight">
-                        <a href="legacy502/index.html" target="_blank">Version 5.0.2 (new window)</a>
-                    </div>
-                    <div class="menuRow menuRowHighlight">
-                        <a href="legacy471/index.html" target="_blank">Version 4.7.1 (new window)</a>
-                    </div>
-                </div>
-            </div> -->
 
             <div class="dropdown">
                 &nbsp;
@@ -183,6 +163,9 @@
     <div id="cover"></div>
 
     <div id="openSourceMenu" class="openSaveMenu">
+        <span class="openSaveLabel">Google Drive&nbsp;&nbsp;<a href="" target="_blank" title="SequenceDiagram opens diagrams directly from inside Google Drive">G Suite Marketplace</a></span><br>
+        <button id="openButtonGoogleDrive">Open</button>
+        <br>
         <br>
         <span class="openSaveLabel">OneDrive</span><br>
         <button id="openButtonOneDrive">Open</button>
@@ -248,77 +231,6 @@
             <p>&nbsp;</p>
             <div id="imageDiv">
             </div>
-        </div>
-    </div>
-
-    <div class="popupDialog" id="infoPopup">
-        <div class="popupHead"><span class="popupTitle">About</span><span class="popupCloseIcon" title="close">✕</span></div>
-        <div class="popupDialogInner">
-            <p class="infoText">SequenceDiagram.org is an online tool / software for creating UML sequence diagrams. Founded in 2014 with the purpose to improve the efficiency when creating and working with sequence diagrams by combining text notation scripting and drawing
-                by clicking and dragging in the same model.</p>
-
-            <p class="infoText">All parsing, processing, and drawing is done client side. The benefit of this is that SequenceDiagram.org is fast and convenient to work with; it also doesn’t transfer your diagram data over the Internet like many other sequence diagram tools
-                on the market. This also means that it is possible to work with the tool offline.</p>
-
-            <p class="infoText">The tool is developed, maintained, and used by people who create a lot of sequence diagrams in their daily work. If you have any question / comments / suggestions / bugs please contact info@sequencediagram.org. The more feedback we get the
-                better we can prioritize.</p><br>
-
-            <h1 class="infoHeadline">FAQ</h1>
-            <h2 class="infoFAQ">Privacy and data protection information</h2>
-            <p class="infoText">The tool itself does not collect data, however services it relies on such as Content Delivery Network, hosting, and cloud storage does. See <a href="privacypolicy.txt">privacy policy</a> for details.</p><br>
-
-            <h2 class="infoFAQ">Are diagrams/scripts created using SequenceDiagram.org subject to any license?</h2>
-            <p class="infoText">No license is imposed by SequenceDiagram.org on the generated output. However, like with all images containing text, the fonts used might. The default font used in diagrams is the default sans-serif font selected by your browser. You can specify
-                a different font using the fontfamily keyword, see help for more information. See <a href="LICENSE.txt">LICENSE</a> for details.</p><br>
-
-            <h2 class="infoFAQ">How do I generate a PDF of my sequence diagram?</h2>
-            <p class="infoText">Zoom to a chosen level in the editor and Print to PDF from your browser. The print css makes sure to only show the diagram on the page.
-            </p><br>
-
-            <h2 class="infoFAQ">Are there any example sequence diagrams?</h2>
-            <p class="infoText">Yes, clicking the help menu and selecting "Instructions" will show examples of all possible diagram elements. A copy icon is available for copying the text notation.</p><br>
-
-            <h2 class="infoFAQ">Is the codebase of SequenceDiagram.org open source?</h2>
-            <p class="infoText">No, the codebase is currently not available under any open source license</p><br>
-
-            <h2 class="infoFAQ">Can I run the SequenceDiagram.org tool in my company's private network (on-premises)?</h2>
-            <p class="infoText">Yes, by donating 400$ you are licensed to run the SequenceDiagram.org tool and its REST-like API inside your company's network (enterprise license). You are also eligible to receive any new published versions of the software for the duration
-                of 1 year from the donation date by request. Your donation is highly appreciated and allows us to keep SequenceDiagram.org online and free for everyone to use. Please contact <a href="mailto:info@sequencediagram.org">info@sequencediagram.org</a>                for any questions.<br><br> The software is delivered in three formats:</p>
-            <ul>
-                <li>A Node JS application with the Sequencediagram.org tool and a REST-like API for integration with other services, see <a href="README.txt">README.txt</a> for details
-                </li>
-                <li>A war file with the Sequencediagram.org tool for deployment in a Java Servlet Container such as Tomcat, Jboss, Wildfly, Jetty, etc</li>
-                <li>A zip file with the Sequencediagram.org tool for static web page hosting inside the DocumentRoot of a web server such as Apache, IIS, etc, or static on any cloud provider
-                </li>
-            </ul>
-            <br>
-
-            <h2 class="infoFAQ">What libraries are used by SequenceDiagram.org?</h2>
-            <p class="infoText">
-                <ul>
-                    <li><a href="https://github.com/pieroxy/lz-string">lz-string</a> is used to create URLs for sharing sequence diagrams.
-                        <a href="libs/lz-string-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://github.com/gliffy/canvas2svg">Canvas2Svg</a> is used to export the diagram into SVG file format.
-                        <a href="libs/canvas2svg-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://codemirror.net/">CodeMirror</a> is used as the text editor.
-                        <a href="libs/codemirror-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="http://fontawesome.io">Font Awesome</a> is used to provide icons for the icon participants.
-                        <a href="libs/fontawesome-webfont-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://materialdesignicons.com">Material Design Icons from the Community</a> is used to provide icons for the icon participants.
-                        <a href="libs/materialdesignicons-webfont-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://github.com/google/material-design-icons">Material Design icons by Google</a> (included in materialdesignicons.com collection) is used to provide icons for the icon participants.
-                        <a href="libs/materialdesigniconsbygoogle-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://fontawesome.com">Font Awesome 5 Free</a> is used to provide icons for the icon participants.
-                        <a href="libs/fontawesome5free-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://github.com/mourner/rbush">RBush</a> is used for collision detection calculations for onmousemove events.
-                        <a href="libs/rbush-LICENSE.txt">LICENSE</a></li>
-                    <li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js">MSAL.js</a> from Microsoft is used for authentication towards Microsoft services.
-                    </li>
-                    <li><a href="https://docs.microsoft.com/en-us/onedrive/developer/controls/file-pickers/js-v72/?view=odsp-graph-online">OneDrive.js</a> from Microsoft is used for file picker for OneDrive and SharePoint.
-                    </li>
-                    <li><a href="https://developers.google.com/identity/sign-in/web/sign-in">platform.js</a> from Google is used for authentication towards Google services and file picker for Google Drive and Team Drives.
-                    </li>
-                </ul>
         </div>
     </div>
 
@@ -396,54 +308,45 @@
             <iframe id="instructionsIFrame" frameborder="0"></iframe>
         </div>
     </div>
-    <!-- width: 300px; -->
-    
+
     <div class="image-map-container">
     <img src = "diagram.png" width='480px' height='480px' alt="" usemap="#image-map"> 
     <div class="map-selector"></div>
     </div>
 
     <map name="image-map" id="image-map">
-    	<area alt="" title="participant PurchaserAgent" shape="rect" coords="0,0,91,34" /> <!-- pa -->
-        <area alt="" title="" href="#" shape="rect" coords="188,0,322,34" /> <!-- fa-->
-        <area alt="" title="" href="#" shape="rect" coords="390,0,480,34" /> <!-- sa-->
+    	<area alt="" title="participant PurchaserAgent" shape="rect" href="#" coords="0,0,91,34" /> <!-- pa -->
+        <area alt="" title="participant FacilitatorAgent" href="#" shape="rect" coords="188,0,322,34" /> <!-- fa-->
+        <area alt="" title="participant SellerAgent href="#" shape="rect" coords="390,0,480,34" /> <!-- sa-->
         <area alt="" title="PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)" href="#" shape="rect" coords="76,60,223,75" /> <!-- bidreq-->
-        <area alt="" title="" href="#" shape="rect" coords="274,69,411,79" /> <!-- get(l,c)-->
-        <area alt="" title="" href="#" shape="rect" coords="327,86,357,99" /> <!-- 1st return-->
-        <area alt="" title="" href="#" shape="rect" coords="258,106,439,176" /> <!-- if curr<bid note-->
-        <area alt="" title="" href="#" shape="rect" coords="47,182,99,210" /><!--b.loop -->
-        <area alt="" title="" href="#" shape="rect" coords="224,205,255,237" /> <!-- timer-->
+        <area alt="" title="FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)" href="#" shape="rect" coords="274,69,411,79" /> <!-- get(l,c)-->
+        <area alt="" title="FacilitatorAgent<--SellerAgent:return" href="#" shape="rect" coords="327,86,357,99" /> <!-- 1st return-->
+        <area alt="" title="note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice" href="#" shape="rect" coords="258,106,439,176" /> <!-- if curr<bid note-->
+        <area alt="" title="loop Bidding Loop" href="#" shape="rect" coords="47,182,99,210" /><!--b.loop -->
+        <area alt="" title="box over FacilitatorAgent:Timer 5 Sec" href="#" shape="rect" coords="224,205,255,237" /> <!-- timer-->
         
-        <area alt="" title="" href="#" shape="rect" coords="254,216,293,232" /><!--self call -->
-        <area alt="" title="" href="#" shape="rect" coords="308,191,412,268" /><!--if br pa -->
-        <area alt="" title="" href="#" shape="rect" coords="347,362,418,403" /><!-- pa if else -->
-        <area alt="" title="" href="#" shape="rect" coords="117,322,174,340" /><!-- -->
-        <area alt="" title="" href="#" shape="rect" coords="116,413,176,429" /><!-- -->
-        <area alt="" title="" href="#" shape="rect" coords="286,465,408,478" /><!-- -->
+        <area alt="" title="FacilitatorAgent->FacilitatorAgent:Self call" href="#" shape="rect" coords="254,216,293,232" /><!--self call -->
+        <area alt="" title="1.note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer 2.end" href="#" shape="rect" coords="308,191,412,268" /><!--if br pa -->
+        <area alt="" title="alt case PA ID && Flag" href="#" shape="rect" coords="347,362,418,403" /><!-- pa if else -->
+        <area alt="" title="PurchaserAgent<--FacilitatorAgent:if yes return sold" href="#" shape="rect" coords="117,322,174,340" /><!-- -->
+        <area alt="" title="1.else !(case PA ID && Flag)
+        2.PurchaserAgent<--FacilitatorAgent:return unsold
+        3.end" href="#" shape="rect" coords="116,413,176,429" /><!-- -->
+        <area alt="" title="FacilitatorAgent->SellerAgent:return CurrentPrice, Status" href="#" shape="rect" coords="286,465,408,478" /><!-- -->
     </map>
 
 
 
     <!-- <input type="text" value="123" id="input1">
-
 <span id="span1">This is span1</span>
-
 <button onclick="myFunction()">Click me</button>
-
 <script>
-
 function myFunction(){
-
 var inputValue=document.getElementById('input1').value;
-
 if(inputValue==111){
-
 document.getElementById('span1').innerHTML='This is changed'
-
 }
-
 }
-
 </script> -->
 
 <div class="fixed2">
@@ -455,28 +358,8 @@ document.getElementById('span1').innerHTML='This is changed'
 </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
     <script src="initMain.js"></script>
-    
 </body>
 
 </html>
-<!-- title Auction System
-participant PurchaserAgent
-participant FacilitatorAgent
-participant SellerAgent
-
-PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)
-FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)
-FacilitatorAgent<--SellerAgent:return
-note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice
-loop Bidding Loop
-box over FacilitatorAgent:Timer 5 Sec
-FacilitatorAgent->FacilitatorAgent:Self call
-note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer
-end
-alt case PA ID && Flag
-PurchaserAgent<--FacilitatorAgent:if yes return sold
-else !(case PA ID && Flag)
-PurchaserAgent<--FacilitatorAgent:return unsold
-end
-FacilitatorAgent->SellerAgent:return CurrentPrice, Status  -->

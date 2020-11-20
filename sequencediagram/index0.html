@@ -1,0 +1,179 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+<head>
+    <title>Software Engineering Virtual Lab, IIIT Hyderabad</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Virtual Lab, VLabs, Software Engineering, UML, Use case diagrams, Django">
+    
+    <link rel="shortcut icon" type="image/png" href="/se/isad_static/isad/images/folder_labs_32.png">
+
+    <link href="/se/isad_static/isad/css/isad.css" rel="stylesheet" type="text/css">
+    <link href="/se/isad_static/isad/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+    <link rel="stylesheet" type="text/css" href="/se/isad_static/isad/ddtabmenufiles/glowtabs.css">
+
+
+    <link type="text/css" rel="stylesheet" href="/se/isad_static/isad/lib/SyntaxHighlighter/styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="/se/isad_static/isad/lib/SyntaxHighlighter/styles/shThemeDefault.css"/>
+
+</head>
+
+<body bgcolor="#FFFFFF">
+
+            
+<style type="text/css">
+    div#title {
+        padding-bottom: 5px;
+    }
+    div#title h1 {
+        color: #0033CC;
+    }
+    div#contents {
+
+    }
+</style>
+
+
+
+
+<div id="contents" class="font-normal">
+
+<h2>Sequence diagram</h2>
+<p>It represents the behavioral aspects of a system. Sequence diagram shows the interactions between the objects by means of passing messages from one object to another with respect to time in a system.</p>
+
+<h2>Elements in sequence diagram</h2>
+<p>Sequence diagram contains the objects of a system and their life-line bar and the messages passing between them.</p>
+
+<h2>Object</h2>
+<p>Objects appear at the top portion of sequence diagram. Object is shown in a rectangle box. Name of object precedes a colon ‘:’ and the class name, from which the object is instantiated.  The whole string is underlined and appears in a rectangle box. Also, we may use only class name or only instance name.</p>
+<!--
+<p><strong>Example</strong><center><img class="diagram" src="/se/isad_static/isad/images/theory/07/exp78.png" alt="State"> Figure-08: </center></p>
+-->
+<p>Objects which are created at the time of execution of use case and are involved in message passing , are appear in diagram, at the point of their creation.</p>
+
+<h2>Life-line bar</h2>
+<p>A down-ward vertical line from object-box is shown as the life-line of the object. A rectangle bar on life-line indicates that it is active at that point of time.</p>
+
+<h2>Messages</h2>
+Messages are shown as an arrow from the life-line of sender object to the life-line of receiver object and labeled with the message name. Chronological order of the messages passing throughout the objects’ life-line show the sequence in which they occur. There may exist some different types of messages :
+<ul>
+<li><strong>Synchronous messages:</strong>Receiver start processing the message after receiving it and sender needs to wait until it is made. A straight arrow with close and fill arrow-head from sender life-line bar to receiver end, represent a synchronous message.</li>
+<li><strong>Asynchronous messages:</strong>For asynchronous message sender needs not to wait for the receiver to process the message. A function call that creates thread can be represented as an asynchronous message in sequence diagram. A straight arrow with open arrow-head from sender life-line bar to receiver end, represent an asynchronous messagen.</li>
+<li><strong>Return message:</strong>For a function call when we need to return a value to the object, from which it was called, then we use return message. But, it is optional, and we are using it when we are going to model our system in much detail. A dashed arrow with open arrow-head from sender life-line bar to receiver end, represent that message.</li>
+<li><strong>Response message:</strong>One object can send a message to self.  We use this message when we need to show the interaction between the same object.</li>
+<center><img class="diagram" src="exp79.png" alt="State"></center>
+<center>For more info, check out:</center>
+<center><iframe width="420" height="315"
+src="https://www.youtube.com/embed/pCK6prSq8aw">
+</iframe></center>
+
+<h3>How the Simulation UI is organised:</h3>
+<ul>
+    <li>Target Area: The area on the right higlights the result we want to achieve. You can hover over the components 
+        to see hints to achieve our desired result for that component. Remember, always go from left to right, top to bottom.</li>
+    <li>Text Area: The area on the left is where we are supposed to write out components of sequence diagram. The order from top-bottom 
+        should be maintained, and if you mess up you can see the changes reflected immediately in the interative area.</li>
+    <li>Interactive Area: This helps the user to let go of the text area for a click based approach</li>
+    <li>Presentation Area: This highlights the sequence components, in case the user wants to refresh over them.</li>
+    <li>Solution Area: The user can jump to the solution in case he has written everything and wants to confirm or if he is stuck
+         and wants to directly view the answer. </li>
+</ul>
+
+
+
+<h3>Following are our test case-specific introductions:</h3>
+
+<center><h2>Auction System:</h2></center>
+<p>An auction system takes place in real time, where a multiple bids take place for multiple items, and if the bid is met the item is sold.</p>
+
+<h3>Elements in the sequence diagram:</h2>
+
+<h4>Objects</h4>
+<ul>
+<li>PurchaserAgent: acts as initiator (the buyer)</li>
+<li>FacilitatorAgent: acts as mediator (the middleman)</li>
+<li>SellerAgent: acts as retaliator (the seller)</li>
+</ul>
+<!-- <p>Objects which are created at the time of execution of use case and are involved in message passing , are appear in diagram, at the point of their creation.</p>
+
+<h2>Life-line bar</h2>
+<p>A down-ward vertical line from object-box is shown as the life-line of the object. A rectangle bar on life-line indicates that it is active 
+    at that point of time.</p> -->
+
+<h4>Messages</h4>
+<ul>
+    <li>Synchronous messages: Request and Get Arrows, as they need to be completed before proceeding </li>
+    <li>Response messages: the return messages, generally return acknowledgment for success and failure of current bid/condition</li>
+    <li>SellerAgent: acts as retaliator (the seller)</li>
+</ul>
+
+<h4>Fragments</h4>
+<ul>
+    <li>Loop: The bidding loop iterates for 5 sec</li>
+    <li>alt: used for if else, status of item </li>
+</ul>
+
+<h4>Miscellaneous</h4>
+<ul>
+    <li>Notes: Used to point out and further explain the current condition</li>
+    <li>self call: call to the same object</li>
+    <li>timer: indicates the current timer/li>
+</ul>
+
+<br><br>
+
+<center><h2>Food Delivery System:</h2></center>
+<p>An Food Delivery System processes an order, and communicates with the kitchen and then the delivery guy to finally deliver to the caller.</p>
+
+<h3>Elements in the sequence diagram:</h2>
+
+<h4>Objects</h4>
+<ul>
+<li>Actors: The components buyer and delivery guy, as they are not entities but singular, are represented as actor </li>
+<li>Objects: The restaurant and kitchen function (the rectangualer boxes) function as a regular object.</li>
+</ul>
+<!-- <p>Objects which are created at the time of execution of use case and are involved in message passing , are appear in diagram, at the point of their creation.</p>
+
+<h2>Life-line bar</h2>
+<p>A down-ward vertical line from object-box is shown as the life-line of the object. A rectangle bar on life-line indicates that it is active 
+    at that point of time.</p> -->
+
+<h4>Messages</h4>
+<ul>
+    <li>Synchronous messages: Passing messages from left to right, from buyer to restaurant to kitchen and restaurent to delivery boy 
+        (restaurant is mediator) </li>
+    <li>Response messages: the kitchen, when food is prepared and the caller, when food is received</li>
+    <li>Asynchronous: the tracking of the delivery buy</li>
+</ul>
+
+<h4>Miscellaneous</h4>
+<ul>
+    <li>Actiivation: Used to highlight the different participants, and their life cycle</li>
+</ul>
+
+<br>
+<br>
+<center><h2><a href="index2.html">Click to start the simulation for Delivery System</a></h2></center><br><br>
+<center><h2><a href="index.html">Click to start the simulation for Auction</a></h2></center>
+</div>
+
+<div class="hidden">
+    <input type="hidden" id="h_tid" value="7" />
+    <input type="hidden" id="h_sbase" value="" />
+</div>
+
+<div class="clear"></div>
+
+
+
+        </div>
+
+
+
+</body>
+</html>
+
