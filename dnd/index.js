@@ -195,7 +195,7 @@ dropTarget.addEventListener('drop', function(ev) {
 
   if(document.getElementById("temp").children.length == 0)
   {
-  alertify.alert("Hurray, you did it!!");
+  alertify.alert("Hurray, you did it!!").setHeader('Success');
   }
 
 });
