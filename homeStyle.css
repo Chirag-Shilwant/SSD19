@@ -1,35 +1,40 @@
 body {
-  background-color: #51e2f5;
-  color: black;
-  font-family: Verdana, Helvetica, sans-serif;
+background: linear-gradient(to right, #0ED2F7, #B2FEFA); 
+color: black;
+font-family: Verdana, Helvetica, sans-serif;
 }
 
 .covidInfo{
 position: absolute;
 left : 10px;
 font-size: 20px;
-background-color: #fff5d7;
+
 top: 150px;
 }
 .covidInfo1{
 position: absolute;
 left : 10px;
 font-size: 20px;
-background-color: #fff5d7;
-top: 350px;
+top: 310px;
 }
-
 
 .covidInfo2{
 position: absolute;
-left : 40px;
-top: 740px;
-}
+left : 10px;
+top: 580px;
 
+}
 
 .covidInfo3{
 position: absolute;
 left : 10px;
-background-color: #fff5d7;
-top: 1500px;
+top: 830px;
+
+}
+
+.covidInfo4{
+position: absolute;
+left : 10px;
+top: 1680px;
+
 }
