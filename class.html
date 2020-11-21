@@ -13,9 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 <script src="behaviour.js"></script>
-<link rel="stylesheet" href="ssdstyle.css">
 </head>
-
 
 <body>
   <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
@@ -61,6 +59,11 @@
                 Auction Case Study
               </a>
           </li>
+          <li class="nav-item " > 
+                <a class="nav-link" href="case_study_food.html"> 
+                  Food ordering Case Study
+                </a>
+           </li>
           </ul>
 
       </div>
@@ -79,31 +82,68 @@
 </div>
 
 <div class ="covidInfo1">
-<h2>List of classes in our Example</h2>
-<p>Based on conceptual modeling and domain knowledge we already had identified a list of classes. We present them here once again: <br/>
+<h2> Description </h2>
+<p> There are several diagram components which can be efficiently used while making/editing the model. These are as follows:
 <ul>
-<li>Auction</li>
-<li>Bid</li>
-<li>Person</li>
-<li>Address</li>
-<li>Item</li>
-<li>Category</li>
-<li>Open</li>
-<li>Annotation</li>
+<li>Class { name, attribute, method}</li>
+<li>Objects</li>
+<li>Interface</li>
+<li>Relationships {inheritance, association, generalization}</li>
+<li>Associations {bidirectional, unidirectional}</li>
+</ul>
+ </p>
+</div>
+
+<div class="covidInfo2">
+<h2> Basic components of a class diagram</h2>
+<p>
+
+The standard class diagram is composed of three sections:
+<br>
+<ol>
+<li>Upper section: Contains the name of the class. This section is always required, whether you are talking about the classifier or an object.</li><br>
+<li>Middle section: Contains the attributes of the class. Use this section to describe the qualities of the class. This is only required when describing a specific instance of a class.</li><br>
+<li>Bottom section: Includes class operations (methods). Displayed in list format, each operation takes up its own line. The operations describe how a class interacts with data.</li>
+</ol>
+
+</p>
+</div>
+<div class ="covidInfo3">
+<h2>Other Class Diagram Components</h2>
+<p>
+<ul>
+
+<li>Name --> The first row in a class shape. </li><br>
+<img src="./images/classname.jpg" alt="ClassName"> </img>
+<br><br>
+
+<li>Attributes --> The second row in a class shape. Each attribute of the class is displayed on a separate line.</li><br>
+<br>
+<img src="./images/attribute.jpg" alt="Inheritence"> </img>
+<br><br>
+<li>Methods --> The third row in a class shape. Also known as operations, methods are displayed in list format with each operation on its own line.</li><br>
+<br>
+
+<li>Inheritance/Generalization --> The process of a child or sub-class taking on the functionality of a parent or superclass, also known as generalization. It's symbolized with a straight connected line with a closed arrowhead pointing towards the superclass.</li>
+<br>
+<img src="./images/generalization.jpg" alt="Inheritence"> </img>
+<br><br>
+<li>Unidirectional association --> A slightly less common relationship between two classes. One class is aware of the other and interacts with it. Unidirectional association is modeled with a straight connecting line that points an open arrowhead from the knowing class to the known class.</li><br>
+<li>Bidirectional association --> The default relationship between two classes. Both classes are aware of each other and their relationship with the other. This association is represented by a straight line between two classes.</li><br>
+
+<li>Aggregation --> An aggregation is a special case of an association (see above) meaning “consists of”:<br>
+The diamond documents this meaning; a caption is unnecessary.
+</li><br>
+<img src="./images/aggregation.jpg" alt="Aggregation"> </img>
+
 </ul>
 </p>
 </div>
 
-<div class ="covidInfo2">
-<img src="class.png" alt="Class diagram" width="900" height="600">
+<div class ="covidInfo4">
+<h2>Elements of Class Diagram</h2>
+<img src="./images/classEg.jpg" alt="Aggregation"> </img>
 </div>
-
-<div class ="covidInfo3">
-<h2> Description </h2>
-<p> Pending </p>
-</div>
-
-
 
 </body>
 </html>
