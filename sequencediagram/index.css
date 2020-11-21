@@ -754,7 +754,11 @@ div.fixed2 {
   top: 550px;
   right: 10px;
 }
-
+div.fixed3 {
+    position: fixed;
+    bottom: 100px;
+    right: 950px;
+  }
 
 .tooltip {
   position: relative;

@@ -357,6 +357,17 @@ document.getElementById('span1').innerHTML='This is changed'
     <iframe width='500px' height='380px' src='https://view.officeapps.live.com/op/embed.aspx?src=[seqd.pptx]'></iframe>
 </div> -->
 
+
+<div class="fixed3">
+    <button onclick="myFunction()">Solution</button>
+    <script>
+        function myFunction() {
+          var myWindow = window.open("", "Solution", "width=500,height=800");
+          myWindow.document.write("<details><summary>See Full Solution</summary><p>title Auction System<br>participant PurchaserAgent<br>participant FacilitatorAgent<br>participant SellerAgent<br>PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)<br>FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)<br>FacilitatorAgent<--SellerAgent:return<br>note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice<br>loop Bidding Loop<br>box over FacilitatorAgent:Timer 5 Sec<br>FacilitatorAgent->FacilitatorAgent:Self call<br>note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer<br>end<br>alt case PA ID && Flag<br>PurchaserAgent<--FacilitatorAgent:if yes return sold<br>else !(case PA ID && Flag)<br>PurchaserAgent<--FacilitatorAgent:return unsold<br>end<br>FacilitatorAgent->SellerAgent:return CurrentPrice, Status<br></p></details>");
+        }
+        </script>
+        </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 
     <script src="initMain.js"></script>

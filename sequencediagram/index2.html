@@ -317,17 +317,17 @@
     <map name="image-map" id="image-map">
         <area alt="" title="title Food Delivery System" shape="rect" href="#" coords="132,5,348,36" /> <!-- title -->
     	<area alt="" title="1.actor Buyer 2.activecolor #red" shape="rect" href="#" coords="0,47,56,121" /> <!-- buyer + activate color-->
-        <area alt="" title="1.participant Restaurant 2.activecolor Restaurant #blue" href="#" shape="rect" coords="188,0,322,34" /> <!-- restaur + activate color-->
-        <area alt="" title="1.participant Kitchen 2.activecolor Kitchen #yellow" href="#" shape="rect" coords="390,0,480,34" /> <!-- kitchen + activate color-->
-        <area alt="" title="PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)" href="#" shape="rect" coords="76,60,223,75" /> <!-- delivery boy + activate color-->
-        <area alt="" title="" href="#" shape="rect" coords="274,69,411,79" /> <!-- activate Buyer -->
-        <area alt="" title="" href="#" shape="rect" coords="327,86,357,99" /> <!-- 1.Buyer->Restaurant:Order Food 2.activate Restaurant-->
-        <area alt="" title="" href="#" shape="rect" coords="258,106,439,176" /> <!--1.Restaurant->>Kitchen:Order Preparation 2.activate Kitchen-  -->
-        <area alt="" title="" href="#" shape="rect" coords="224,205,255,237" /> <!-- 1.Restaurant<--Kitchen:Preparation complete 2.deactivate Kitchen-->
-        <area alt="" title="" href="#" shape="rect" coords="308,191,412,268" /><!--1.Restaurant->>Delivery Boy :Assign nearest boy 2.activate Delivery Boy -->
-        <area alt="" title="" href="#" shape="rect" coords="117,322,174,340" /><!--Buyer->Delivery Boy: Track location on -->
-        <area alt="" title="" href="#" shape="rect" coords="116,413,176,429" /><!-- 1. Buyer<--Delivery Boy:Deliver order 2.deactivate Delivery Boy-->
-        <area alt="" title="" href="#" shape="rect" coords="286,465,408,478" /><!-- 1.Buyer->Restaurant:Notify 2.deactivate Buyer-->
+        <area alt="" title="1.participant Restaurant 2.activecolor Restaurant #blue" href="#" shape="rect" coords="100,80,202,125" /> <!-- restaur + activate color-->
+        <area alt="" title="1.participant Kitchen 2.activecolor Kitchen #yellow" href="#" shape="rect" coords="296,77,381,125" /> <!-- kitchen + activate color-->
+        <area alt="" title="PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)" href="#" shape="rect" coords="393,49,473,119" /> <!-- delivery boy + activate color-->
+        <area alt="" title="activate Buyer" href="#" shape="rect" coords="20,129,35,174" /> <!-- activate Buyer -->
+        <area alt="" title="1.Buyer->Restaurant:Order Food 2.activate Restaurant" href="#" shape="rect" coords="34,155,145,180" /> <!-- 1.Buyer->Restaurant:Order Food 2.activate Restaurant-->
+        <area alt="" title="1.Restaurant->>Kitchen:Order Preparation 2.activate Kitchen" href="#" shape="rect" coords="162,198,332,227" /> <!--1.Restaurant->>Kitchen:Order Preparation 2.activate Kitchen-  -->
+        <area alt="" title="1.Restaurant<--Kitchen:Preparation complete 2.deactivate Kitchen" href="#" shape="rect" coords="159,237,331,263" /> <!-- 1.Restaurant<--Kitchen:Preparation complete 2.deactivate Kitchen-->
+        <area alt="" title="1.Restaurant->>Delivery Boy :Assign nearest boy 2.activate Delivery Boy" href="#" shape="rect" coords="162,283,425,310" /><!--1.Restaurant->>Delivery Boy :Assign nearest boy 2.activate Delivery Boy -->
+        <area alt="" title="Buyer->Delivery Boy: Track location on" href="#" shape="rect" coords="35,323,425,352" /><!--Buyer->Delivery Boy: Track location on -->
+        <area alt="" title="1. Buyer<--Delivery Boy:Deliver order 2.deactivate Delivery Boy" href="#" shape="rect" coords="36,367,424,395" /><!-- 1. Buyer<--Delivery Boy:Deliver order 2.deactivate Delivery Boy-->
+        <area alt="" title="1.Buyer->Restaurant:Notify 2.deactivate Buyer" href="#" shape="rect" coords="35,411,144,433" /><!-- 1.Buyer->Restaurant:Notify 2.deactivate Buyer-->
     </map>
 
 
@@ -346,7 +346,16 @@ document.getElementById('span1').innerHTML='This is changed'
 <div class="fixed2">
     <iframe width='500px' height='380px' src="https://iiitaphyd-my.sharepoint.com/personal/anshul_kakraniya_students_iiit_ac_in/_layouts/15/Doc.aspx?sourcedoc={d49a1a1a-a861-4531-9d44-5d1cb1bbd583}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
 </div>
+<div class="fixed3">
+    <button onclick="myFunction()">Solution</button>
 
+<script>
+function myFunction() {
+  var myWindow = window.open("", "Solution", "width=500,height=800");
+  myWindow.document.write("<details><summary>See Full Solution</summary><p>title Food Delivery System<br>actor Buyer<br>activecolor #red<br>participant Restaurant<br>activecolor Restaurant #blue<br>participant Kitchen<br>activecolor Kitchen #yellow<br>actor Delivery Boy<br>activecolor Delivery Boy #white<br>activate Buyer<br>Buyer->Restaurant:Order Food<br>activate Restaurant<br>Restaurant->>Kitchen:Order Preparation<br>activate Kitchen<br>Restaurant<--Kitchen:Preparation complete<br>deactivate Kitchen<br>Restaurant->>Delivery Boy :Assign nearest boy<br>activate Delivery Boy<br>Buyer->Delivery Boy: Track location on<br>Buyer<--Delivery Boy:Deliver order<br>deactivate Delivery Boy<br>Buyer->Restaurant:Notify<br>deactivate Buyer</p> </details>");
+}
+</script>
+</div>
 <!-- <div class="fixed2">
     <iframe width='500px' height='380px' src='https://view.officeapps.live.com/op/embed.aspx?src=[seqd.pptx]'></iframe>
 </div> -->
