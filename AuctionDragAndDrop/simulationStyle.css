@@ -10,27 +10,35 @@ body {
   color: #444;
 }
 
+.tp{
+ position:absolute;
+ height: 1000px;
+ width:100%;
+
+}
+
 .boxx {
   background-color: #444;
   color: #fff;
   border-radius: 5px;
   padding: 11px;
-  font-size: 150%;
-  height: 190vh;
-  width: 25vh;
+  font-size: 138%;
+  height: 200vh;
+  width: 30vh;
 }
+
 #arrow{
 color: black;
 font-size:86px;
 position: relative;
-top:-2200px;
-left: 490px;
+top:-2265px;
+left: 530px;
 
 }
 #A1{
   font-size: 150%;
   position: relative;
-  top:-2045px;
+  top:-2150px;
   left:282px;
   background-color: #DCDCDC;
   border-radius: 5px;
@@ -40,7 +48,7 @@ left: 490px;
 #A2{
   font-size: 150%;
   position: relative;
-  top:-2045px;
+  top:-2150px;
   left:282px;
   background-color: #DCDCDC;
   border-radius: 5px;
@@ -50,8 +58,8 @@ left: 490px;
 #A3{
   font-size: 150%;
   position: relative;
-  top:-1685px;
-  left:130px;
+  top:-1785px;
+  left:90px;
   
   background-color: #DCDCDC;
   border-radius: 5px;
@@ -62,8 +70,8 @@ left: 490px;
 #A4{
   font-size: 150%;
   position: relative;
-  top:-1830px;
-  left:1020px;
+  top:-1900px;
+  left:1060px;
   background-color: #DCDCDC;
   border-radius: 5px;
   height:4vh;
@@ -73,7 +81,7 @@ left: 490px;
 #A5{
   font-size: 150%;
   position: relative;
-  top: -1830px;
+  top: -1911px;
   left: 340px;
   background-color: #DCDCDC;
   border-radius: 5px;
@@ -83,8 +91,8 @@ left: 490px;
 
 #b4{
   position: relative;
-  top:-1674px;
-  left:441px;
+  top:-1743px;
+  left:460px;
   background-color: #000066;
   height:8vh;
   width: 26vh;
@@ -92,8 +100,8 @@ left: 490px;
 
 #b5{
   position: relative;
-   top:-1674px;
-  left:441px;
+  top:-1743px;
+  left:460px;
   background-color: #000066;
   height:16vh;
   width: 26vh;
@@ -101,8 +109,8 @@ left: 490px;
 
 #b6{
   position: relative;
-  top:-1674px;
-  left:441px;
+  top:-1743px;
+  left:460px;
   background-color: #000066;
   height:12vh;
   width: 26vh;
@@ -110,14 +118,14 @@ left: 490px;
 
 #b7{
   position: relative;
-  top:-1340px;
+  top:-1460px;
   left:-300px;
 }
 
 #b8{
   position: relative;
-  top:-1349px;
-  left:1021px;
+  top:-1465px;
+  left:1080px;
   background-color: #000066;
   height:12vh;
   width: 26vh;
@@ -125,16 +133,16 @@ left: 490px;
 
 #b9{
   position: relative;
-  font-size: 137%;
-  top: -1740px;
-  left: -560px;
+  font-size: 104%;
+  top: -1824px;
+  left: -550px;
   height: 20vh;
   width: 16vh;
 }
 #b9a{
   position: relative;
-  top:-1749px;
-  left:-120px;
+  top:-1830px;
+  left:-90px;
   background-color: #000066;
   height:12vh;
   width: 16vh;
@@ -142,8 +150,8 @@ left: 490px;
 
 #b10{
   position: relative;
-  font-size: 137%;
-  top: -1740px;
+  font-size: 104%;
+  top: -1822px;
   left: -805px;
   height: 20vh;
   width: 16vh;
@@ -151,8 +159,8 @@ left: 490px;
 
 #b10a{
   position: relative;
-  top:-1749px;
-  left:-365px;
+  top:-1828px;
+  left:-346px;
   background-color: #000066;
   height:12vh;
   width: 16vh;
@@ -163,8 +171,8 @@ left: 490px;
   color: #fff;
   border-radius: 5px;
   padding: 12px;
-  font-size: 150%;
-  height: 20vh;
+  font-size: 125%;
+  height: 23vh;
   width: 26vh;
 }
 
@@ -172,20 +180,20 @@ left: 490px;
 border: none;
 border-top: 5px solid;
 color:black;
-width: 164px;
+width: 204px;
 position: absolute;
 top: 170px;
-left:760px;	
+left:716px;	
 }
 
 .line1{
 border: none;
 border-top: 5px solid;
 color:black;
-width: 164px;
+width: 204px;
 position: absolute;
 top: 170px;
-left:1200px;
+left:1177px;
 	
 }
 
@@ -193,10 +201,10 @@ left:1200px;
 border: none;
 border-top: 5px solid;
 color:black;
-transform: rotate(-65deg);
-width: 415px;
+transform: rotate(-69deg);
+width: 373px;
 position: absolute;
-top: 580px;
+top: 588px;
 left:1222px;
 	
 }
@@ -204,10 +212,10 @@ left:1222px;
 border: none;
 border-top: 5px solid;
 color:black;
-transform: rotate(65deg);
+transform: rotate(55deg);
 width: 166px;
 position: absolute;
-top: 510px;
+top: 520px;
 left:950px;
 	
 }
@@ -216,10 +224,10 @@ left:950px;
 border: none;
 border-top: 5px solid;
 color:black;
-transform: rotate(-127deg);
-width: 635px;
+transform: rotate(-130deg);
+width: 644px;
 position: absolute;
-top: 610px;
+top: 620px;
 left:550px;
 	
 }
@@ -230,7 +238,7 @@ border-top: 5px solid;
 color:black;
 width: 195px;
 position: absolute;
-top: 420px;
+top: 436px;
 left:470px;
 	
 }
@@ -242,7 +250,7 @@ color:black;
 transform: rotate(90deg);
 width: 145px;
 position: absolute;
-top: 495px;
+top: 506px;
 left:400px;
 	
 }
@@ -254,7 +262,7 @@ color:black;
 transform: rotate(90deg);
 width: 149px;
 position: absolute;
-top: 493px;
+top: 508px;
 left:590px;
 	
 }
