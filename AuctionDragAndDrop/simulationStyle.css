@@ -10,13 +10,42 @@ body {
   color: #444;
 }
 
-.tp{
- position:absolute;
- height: 1000px;
- width:100%;
+.map1
+{
+position: relative;
+top:-2567px;
+left: 790px;
+
+}
+.map2
+{
+position: relative;
+top:-2590px;
+left: 1240px;
+
+}
+.map3
+{
+position: relative;
+top:-2220px;
+left: 790px;
+
+}
+.map4
+{
+position: relative;
+top:-2270px;
+left: 1010px;
 
 }
 
+.map5
+{
+position: relative;
+top:-2270px;
+left: 1420px;
+
+}
 .boxx {
   background-color: #444;
   color: #fff;
