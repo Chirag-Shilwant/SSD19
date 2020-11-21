@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<HTML lang="en">
+
+<HEAD>
+    <meta charset="UTF-8">
+    <title>SequenceDiagram</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <script src="libs/lz-string.min.js"></script>
+    <script src="libs/canvas2svg.min.js"></script>
+    <link rel="stylesheet" href="libs/codemirror.css">
+    <script src="libs/codemirror.min.js"></script>
+    <link rel="stylesheet" href="libs/show-hint.css">
+    <script src="libs/show-hint.js"></script>
+    <script src="libs/active-line.js"></script>
+    <link rel="stylesheet" href="libs/dialog.css">
+    <script src="libs/dialog.js"></script>
+    <script src="libs/searchcursor.js"></script>
+    <script src="libs/search.js"></script>
+    <script src="libs/annotatescrollbar.js"></script>
+    <link rel="stylesheet" href="libs/matchesonscrollbar.css">
+    <script src="libs/matchesonscrollbar.js"></script>
+    <script src="libs/jump-to-line.js"></script>
+    <script src="libs/rbush.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css?v=9.1.0">
+    <link rel="stylesheet" href="print.css?v=9.1.0" type="text/css" media="print">
+    <script src="all.min.js?v=9.1.0"></script>
+
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
+    <script src="initOneDrive.js"></script>
+    <script src="https://js.live.net/v7.2/OneDrive.js" defer async></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onGooglePlatform" defer async></script>
+</head>
+
+<body>
+    <div id="top">
+        <img id="logo" alt="SequenceDiagram" src="assets/logo24x24.png">
+        <div id="activeFile">
+            <span id="activeFileStatus"><label for="activeFileNameChange"></label><input id="activeFileNameChange"><span
+                id="activeFileNameStatus">Untitled</span> [<span id="activeFileStorageStatus">Not saved</span>]</span>
+        </div>
+        <!--lic-->
+    </div>
+    <div id="topRight">
+        <div>
+
+            <div class="dropdown">
+                <div id="menuButtonView" class="menuButton">View</div>
+                <div id="menuView" class="menuContent">
+                    <div id="menuViewPresentationMode" class="menuRow menuRowHighlight">
+                        <span id="presentationModeCheckbox"></span>&nbsp;Presentation Mode (Ctrl+M)
+                    </div>
+                    <div id="menuViewParticipantOverlay" class="menuRow menuRowHighlight">
+                        <span id="participantOverlayCheckbox"></span>&nbsp;Participant Overlay
+                    </div>
+                    <div id="menuViewReadOnlyPresentationMode" class="menuRow menuRowHighlight" title="check this to make the diagram read only in Presentation Mode">
+                        <span id="readOnlyPresentationModeCheckbox"></span>&nbsp;Read Only Presentation Mode
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div id="menuButtonSettings" class="menuButton">Settings</div>
+                <div id="menuSettings" class="menuContent">
+                    <div class="menuRow">
+                        <fieldset>
+                            <legend>Default (Ctrl+S / Ctrl+O) Storage</legend>
+                            <div id="menuSettingsDefaultStorageGoogleDrive" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioGoogleDrive"></span>&nbsp;Google Drive
+                            </div>
+                            <div id="menuSettingsDefaultStorageGoogleDriveRootFolder" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioGoogleDriveRootFolder"></span>&nbsp;Google Drive Root Folder
+                            </div>
+                            <div id="menuSettingsDefaultStorageOneDrive" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioOneDrive"></span>&nbsp;OneDrive
+                            </div>
+                            <div id="menuSettingsDefaultStorageWebStorage" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioWebStorage"></span>&nbsp;Web Storage (localStorage)
+                            </div>
+                            <div id="menuSettingsDefaultStorageLocalDisk" class="menuRow menuRowHighlight">
+                                <span id="defaultStorageRadioLocalDisk"></span>&nbsp;Local Disk
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div id="menuSettingsAlertForUnsavedChanges" class="menuRow menuRowHighlight">
+                        <span id="alertForUnsavedChangesCheckbox"></span>&nbsp;Alert for unsaved changes
+                    </div>
+                    <div id="menuSettingsAutosave" class="menuRow menuRowHighlight">
+                        <span id="autosaveCheckbox"></span>&nbsp;Autosave every 10 min if there are changes
+                    </div>
+                    <div id="menuSettingsSynchronizeFilenameWithTitle" class="menuRow menuRowHighlight">
+                        <span id="synchronizeFilenameWithTitleCheckbox"></span>&nbsp;Synchronize filename with title (legacy behavior)
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div id="menuButtonHelp" class="menuButton">Help</div>
+                <div id="menuHelp" class="menuContent">
+                    <div class="menuRow menuRowHighlight">
+                        <a href="instructions.html" target="_blank">Instructions (new window)</a>
+                    </div>
+                    <div id="menuHelpInstructionsModalPopup" class="menuRow menuRowHighlight">
+                        Instructions (modal popup)
+                    </div>
+                    <div id="menuHelpAbout" class="menuRow menuRowHighlight">
+                        About (modal popup)
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                &nbsp;
+            </div>
+        </div>
+
+        <div id="notification"></div>
+    </div>
+
+    <div id="actions">
+        <img id="newDiagram" class="actionButton" src="assets/new.svg" title="new diagram">
+        <img id="openButton" class="actionButton" src="assets/open.svg" title="open source text">
+        <img id="saveButton" class="actionButton" src="assets/save.svg" title="save source text">
+        <img id="exportButton" class="actionButton" src="assets/export01.svg" title="export diagram">
+        <hr class="separator">
+        <img id="addParticipant" class="actionButton" src="assets/participant01.svg" title="add participant">
+        <img id="zoomIn" class="actionButton" src="assets/zoomin.svg" title="zoom in">
+        <img id="zoomOut" class="actionButton" src="assets/zoomout.svg" title="zoom out">
+    </div>
+
+    <div id="source">
+        <div id="handleRight"></div>
+    </div>
+    <div id="handleWrapper">
+        <div id="handle">≡</div>
+    </div>
+
+    <canvas id="diagramCanvas" class="canvas" width="300" height="100">
+    Device not supported, use firefox or chrome or safari or ie 10+
+</canvas>
+    <canvas id="participantCanvas" class="canvas" width="500" height="100"></canvas>
+    <div id="interactionCanvasWrapper">
+        <canvas id="interactionCanvas" class="canvas" width="300" height="100">
+        Device not supported, use firefox or chrome or safari or ie 10+
+    </canvas>
+    </div>
+
+    <div id="entryEditor">
+        <div id="entryEditorTop">&nbsp;<span id="entryEditorCloseIcon" title="close">✕</span></div>
+        <div id="participantEdit">
+            Participant alias<br>
+            <input id="participantAliasInput"><br><br> Participant long name<br>
+        </div>
+        <textarea id="entryEditorTextArea"></textarea>
+        <div><span class="popupDialogButtons">
+        <button id="entryEditorCancel">Cancel</button>
+        <button id="entryEditorUpdate">Update (Ctrl + Enter)</button>
+    </span></div>
+    </div>
+
+    <div id="cover"></div>
+
+    <div id="openSourceMenu" class="openSaveMenu">
+        <span class="openSaveLabel">Google Drive&nbsp;&nbsp;<a href="" target="_blank" title="SequenceDiagram opens diagrams directly from inside Google Drive">G Suite Marketplace</a></span><br>
+        <button id="openButtonGoogleDrive">Open</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">OneDrive</span><br>
+        <button id="openButtonOneDrive">Open</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Web Storage (localStorage)</span><br>
+        <button id="openButtonWebStorage">Open</button>
+        <br><br>
+        <span class="openSaveLabel">Local Disk</span><br>
+        <form>
+            <input id="openButtonLocalDisk" type="file">
+        </form>
+    </div>
+
+    <div id="saveSourceMenu" class="openSaveMenu">
+        <span class="openSaveLabel">File Name</span><br>
+        <label for="fileName"></label><input id="fileName" type="text" size="40"><span class="smallText">.txt</span>
+        <br>
+        <br>
+        <span class="openSaveLabel">Google Drive</span><br>
+        <button id="saveButtonGoogleDrive">Save</button> &nbsp;&nbsp;
+        <button id="saveInRootButtonGoogleDrive">Save in Root Folder</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">OneDrive</span><br>
+        <button id="saveButtonOneDrive">Save</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Web Storage (localStorage)</span><br>
+        <button id="saveButtonWebStorage">Save</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">Local Disk (download folder)</span><br>
+        <button id="saveButtonLocalDisk">Save</button>
+    </div>
+
+    <div id="exportDiagramMenu" class="openSaveMenu">
+        <span class="openSaveLabel">Export Name</span><br>
+        <label for="fileName"></label><input id="fileNameExport" type="text" size="40"><span class="smallText">.xyz</span>
+        <br>
+        <br>
+        <span class="openSaveLabel">SVG Image File (vector based image)</span><br>
+        <button id="exportButtonSvg">Export</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">PNG Image File (at current zoom level)</span><br>
+        <a href="#" id="exportButtonPngLink"><button id="exportButtonPng">Export</button></a>
+        <br>
+        <br>
+        <span class="openSaveLabel">PNG Image for Copy / Paste (at current zoom level)</span><br>
+        <button id="exportButtonCopyPaste">Render</button>
+        <br>
+        <br>
+        <span class="openSaveLabel">URL to Share</span><br>
+        <button id="exportButtonUrl">Create</button>
+    </div>
+
+    <div class="popupDialog" id="imageSavePopup">
+        <div class="popupHead"><span class="popupTitle">Export Diagram</span><span class="popupCloseIcon" title="close">✕</span>
+        </div>
+        <div class="popupDialogInner">
+            <p>Right click and copy image or Save as...</p>
+            <p>&nbsp;</p>
+            <div id="imageDiv">
+            </div>
+        </div>
+    </div>
+
+    <div class="popupDialog" id="shareUrlPopup">
+        <div class="popupHead"><span class="popupTitle">Share Link</span><span class="popupCloseIcon" title="close">✕</span></div>
+        <div class="popupDialogInner">
+            <p>Copy the above Titled link or Raw link and share it</p>
+            <p>&nbsp;</p>
+            <table>
+                <tr>
+                    <td>Titled link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkCompressed" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>Raw link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkCompressed" class="rawLink"></textarea></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Presentation Mode Titled Link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkPresentationModeReadOnlyCompressed" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>Presentation Mode Raw Link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkPresentationModeReadOnlyCompressed" class="rawLink"></textarea></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<br>&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>URI encoded Titled link:&nbsp;&nbsp;</td>
+                    <td><a id="titledLinkUriEncoded" href="#" target="_blank" rel="noopener">sequence diagram link</a></td>
+                </tr>
+                <tr>
+                    <td>URI encoded Raw link:&nbsp;&nbsp;</td>
+                    <td><textarea id="rawLinkUriEncoded" class="rawLink"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="popupDialog" id="webStoragePopup">
+        <div class="popupHead"><span class="popupTitle">Web Storage (localStorage)</span><span class="popupCloseIcon" title="close">✕</span></div>
+        <div class="popupDialogInner">
+            <table id="webStorageDiagramTable">
+                <thead>
+                    <tr>
+                        <th id="toggleWebStorageSelection">☐</th>
+                        <th>Name</th>
+                        <th>Modified</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody id="webStorageDiagramTableTBody">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="popupDialogBottom"><span class="popupDialogButtons">
+        <button id="webStoragePopupCancel">Cancel</button>
+        <button id="webStorageDelete">Delete</button>
+        <button id="webStorageOpen">Open</button>
+    </span></div>
+    </div>
+
+    <div class="popupDialog" id="instructionsPopup">
+        <div class="popupHead">
+            <span class="popupTitle">Instructions</span><span class="popupCloseIcon" title="close">✕</span>
+        </div>
+        <div class="popupDialogInnerIFrame">
+            <iframe id="instructionsIFrame" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="image-map-container">
+    <img src = "diagram.png" width='480px' height='480px' alt="" usemap="#image-map"> 
+    <div class="map-selector"></div>
+    </div>
+
+    <map name="image-map" id="image-map">
+    	<area alt="" title="participant PurchaserAgent" shape="rect" href="#" coords="0,0,91,34" /> <!-- pa -->
+        <area alt="" title="participant FacilitatorAgent" href="#" shape="rect" coords="188,0,322,34" /> <!-- fa-->
+        <area alt="" title="participant SellerAgent href="#" shape="rect" coords="390,0,480,34" /> <!-- sa-->
+        <area alt="" title="PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)" href="#" shape="rect" coords="76,60,223,75" /> <!-- bidreq-->
+        <area alt="" title="FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)" href="#" shape="rect" coords="274,69,411,79" /> <!-- get(l,c)-->
+        <area alt="" title="FacilitatorAgent<--SellerAgent:return" href="#" shape="rect" coords="327,86,357,99" /> <!-- 1st return-->
+        <area alt="" title="note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice" href="#" shape="rect" coords="258,106,439,176" /> <!-- if curr<bid note-->
+        <area alt="" title="loop Bidding Loop" href="#" shape="rect" coords="47,182,99,210" /><!--b.loop -->
+        <area alt="" title="box over FacilitatorAgent:Timer 5 Sec" href="#" shape="rect" coords="224,205,255,237" /> <!-- timer-->
+        
+        <area alt="" title="FacilitatorAgent->FacilitatorAgent:Self call" href="#" shape="rect" coords="254,216,293,232" /><!--self call -->
+        <area alt="" title="1.note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer 2.end" href="#" shape="rect" coords="308,191,412,268" /><!--if br pa -->
+        <area alt="" title="alt case PA ID && Flag" href="#" shape="rect" coords="347,362,418,403" /><!-- pa if else -->
+        <area alt="" title="PurchaserAgent<--FacilitatorAgent:if yes return sold" href="#" shape="rect" coords="117,322,174,340" /><!-- -->
+        <area alt="" title="1.else !(case PA ID && Flag)
+        2.PurchaserAgent<--FacilitatorAgent:return unsold
+        3.end" href="#" shape="rect" coords="116,413,176,429" /><!-- -->
+        <area alt="" title="FacilitatorAgent->SellerAgent:return CurrentPrice, Status" href="#" shape="rect" coords="286,465,408,478" /><!-- -->
+    </map>
+
+
+
+    <!-- <input type="text" value="123" id="input1">
+<span id="span1">This is span1</span>
+<button onclick="myFunction()">Click me</button>
+<script>
+function myFunction(){
+var inputValue=document.getElementById('input1').value;
+if(inputValue==111){
+document.getElementById('span1').innerHTML='This is changed'
+}
+}
+</script> -->
+
+<div class="fixed2">
+    <iframe width='500px' height='380px' src="https://iiitaphyd-my.sharepoint.com/personal/anshul_kakraniya_students_iiit_ac_in/_layouts/15/Doc.aspx?sourcedoc={d49a1a1a-a861-4531-9d44-5d1cb1bbd583}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+</div>
+
+<!-- <div class="fixed2">
+    <iframe width='500px' height='380px' src='https://view.officeapps.live.com/op/embed.aspx?src=[seqd.pptx]'></iframe>
+</div> -->
+
+
+<div class="fixed3">
+    <button onclick="myFunction()">Solution</button>
+    <script>
+        function myFunction() {
+          var myWindow = window.open("", "Solution", "width=500,height=800");
+          myWindow.document.write("<details><summary>See Full Solution</summary><p>title Auction System<br>participant PurchaserAgent<br>participant FacilitatorAgent<br>participant SellerAgent<br>PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)<br>FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)<br>FacilitatorAgent<--SellerAgent:return<br>note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice<br>loop Bidding Loop<br>box over FacilitatorAgent:Timer 5 Sec<br>FacilitatorAgent->FacilitatorAgent:Self call<br>note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer<br>end<br>alt case PA ID && Flag<br>PurchaserAgent<--FacilitatorAgent:if yes return sold<br>else !(case PA ID && Flag)<br>PurchaserAgent<--FacilitatorAgent:return unsold<br>end<br>FacilitatorAgent->SellerAgent:return CurrentPrice, Status<br></p></details>");
+        }
+        </script>
+        </div>
+        
+ <div class="fixed4">
+
+<input type="button" class="btn btn-success"
+                       style="font-weight: bold;display: inline;"
+                       value="Close the Simulation"
+                       onclick="myFunction2()">
+
+<div>
+
+<script>
+function myFunction2() {
+window.open('','_self').close()
+}
+</script>       
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
+    <script src="initMain.js"></script>
+</body>
+
+</html>

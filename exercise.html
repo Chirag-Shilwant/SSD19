@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Exercise</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="exerciseStyle.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> SSD Project </title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<html lang="en">
+    <head>
+        <title>The example shows how to create a Quiz, jQuery Survey Library Example</title>
+
+        <meta name="viewport" content="width=device-width"/>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs/.cloudfare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-<script src="behaviour.js"></script>
-<link rel="stylesheet" href="ssdstyle.css">
-</head>
+        
+        
+        <script src="https://unpkg.com/jquery"></script>
+        <script src="https://surveyjs.azureedge.net/1.8.14/survey.jquery.min.js"></script>
+        <link href="https://surveyjs.azureedge.net/1.8.14/modern.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="./index.css">
+        
+        
 
-<body>
+    </head>
+    <body>
+    
     <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navResponsive"
@@ -31,22 +36,17 @@
                     </a>
                 </li>
                 <li class="nav-item "> 
-                    <a class="nav-link" href="#"> 
-                      Introduction
-                    </a>
-                </li>
-                <li class="nav-item "> 
-                    <a class="nav-link" href="#"> 
+                    <a class="nav-link" href="simulation.html"> 
                       Simulation
                     </a>
                 </li>
                 <li class="nav-item " > 
                     <a class="nav-link" href="exercise.html"> 
-                      Excercises
+                      Exercises
                     </a>
                 </li>
                 <li class="nav-item " > 
-                    <a class="nav-link" href="seq.html"> 
+                    <a class="nav-link" href="preindex.html"> 
                       Sequence Diagram
                     </a>
                 </li>
@@ -56,10 +56,15 @@
                     </a>
                 </li>
                 <li class="nav-item " > 
-                  <a class="nav-link" href="case_study.html"> 
+                  <a class="nav-link" href="case_study_auction.html"> 
                     Auction Case Study
                   </a>
               </li>
+              <li class="nav-item " > 
+                <a class="nav-link" href="case_study_food.html"> 
+                  Food ordering Case Study
+                </a>
+           </li>
               </ul>
     
           </div>
@@ -67,167 +72,12 @@
         </div>
     
     </nav>
+    
 
-	<marquee><h1>Exercise Time!!!</h1></marquee>
+        <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+        <div id="surveyResult"></div>
 
-	<div id="page-wrap">
+        <script type="text/javascript" src="./exercise.js"></script>
 
-		<h1>Final Quiz for Class, Object and Sequence Diagram</h1>
-		
-		<form method="post" id="quiz">
-		
-            <ol>
-            
-                <li>
-                
-                    <h3> A class is a</h3>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
-                        <label for="question-1-answers-A">A) Blueprint </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" />
-                        <label for="question-1-answers-B">B) Specific instance of an object </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" />
-                        <label for="question-1-answers-C">C) Category of user requirement </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" />
-                        <label for="question-1-answers-D">D) None of the above</label>
-                    </div>
-                
-                </li>
-                
-                <li>
-                
-                    <h3> In class diagrams, a class is represented with a</h3>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
-                        <label for="question-2-answers-A">A) Rectangle</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" />
-                        <label for="question-2-answers-B">B) Ellipse</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" />
-                        <label for="question-2-answers-C">C) Diamond</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" />
-                        <label for="question-2-answers-D">D) Circle</label>
-                    </div>
-                
-                </li>
-                
-                <li>
-                
-                    <h3> What does a sequence diagram represent?</h3>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
-                        <label for="question-3-answers-A">A) Workflow in the system</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" />
-                        <label for="question-3-answers-B">B) How classes are related to each other </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" />
-                        <label for="question-3-answers-C">C) Sequence of events flow to achieve a target </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" />
-                        <label for="question-3-answers-D">D) Sequence of activities to be performed before moving to next state </label>
-                    </div>
-                
-                </li>
-                
-                <li>
-                
-                    <h3>An object can send a synchronous message and multiple asynchronous message in parallel</h3>
-                    
-                    <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
-                        <label for="question-4-answers-A">A) True</label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" />
-                        <label for="question-4-answers-B">B) False</label>
-                    </div>
-                
-                </li>
-                
-                <li>
-                
-                    <h3> In UML 2.0 a synchronous message is represented with a
-</h3>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-A" value="A" />
-                        <label for="question-5-answers-A">A) Solid arrow with filled arrowhead </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-B" value="B" />
-                        <label for="question-5-answers-B">B) Solid arrow with empty arrowhead </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-C" value="C" />
-                        <label for="question-5-answers-C">C) Dotted arrow with filled arrowhead </label>
-                    </div>
-                    
-                    <div>
-                        <input type="radio" name="question-5-answers" id="question-5-answers-D" value="D" />
-                        <label for="question-5-answers-D">D) Dotted arrow with empty arrowhead </label>
-                    </div>
-                
-                </li>
-            
-            </ol>
-            
-            <input type="submit" value="Submit Quiz" onclick = "myFunction()" />
-		
-		</form>
-	
-	</div>
-	
-	<script type="text/javascript">
-	function myFunction() {
-  	var a1 = document.getElementsByName("question-1-answers");
-  	var a2 = document.getElementsByName("question-2-answers");
-  	var a3 = document.getElementsByName("question-3-answers");
-  	var a4 = document.getElementsByName("question-4-answers");
-  	var a5 = document.getElementsByName("question-5-answers");
-  	
-  	//alert(a1);
-  	var totalCorrect = 0;
-            
-            if (a1 == "A") { totalCorrect++; }
-            if (a2 == "A") { totalCorrect++; }
-            if (a3 == "C") { totalCorrect++; }
-            if (a4 == "A") { totalCorrect++; }
-            if (a5 == "A") { totalCorrect++; }
-            
-            alert("Total Correct = " + totalCorrect + "/ 5" );
-}
-	</script>
-
-</body>
-
+    </body>
 </html>

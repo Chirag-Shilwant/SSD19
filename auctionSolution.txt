@@ -1,0 +1,20 @@
+title Auction System
+participant PurchaserAgent
+participant FacilitatorAgent
+participant SellerAgent
+
+PurchaserAgent->FacilitatorAgent:BidRequest(PA ID, OfferedPrice)
+FacilitatorAgent->SellerAgent:Get(ListOfItems, CurrentPrice)
+FacilitatorAgent<--SellerAgent:return
+note right of FacilitatorAgent:If CurrentPrice<BidRequestPrice, Set Flag (PA ID, 1)\nSet CurrentPrice = BidRequestPrice
+loop Bidding Loop
+box over FacilitatorAgent:Timer 5 Sec
+FacilitatorAgent->FacilitatorAgent:Self call
+note right of FacilitatorAgent:If(BR.PA ID = PA ID) loop for 5 sec else reset timer
+end
+alt case PA ID && Flag
+PurchaserAgent<--FacilitatorAgent:if yes return sold
+else !(case PA ID && Flag)
+PurchaserAgent<--FacilitatorAgent:return unsold
+end
+FacilitatorAgent->SellerAgent:return CurrentPrice, Status

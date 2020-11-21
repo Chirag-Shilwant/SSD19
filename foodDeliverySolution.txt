@@ -1,0 +1,27 @@
+title Food Delivery System
+actor Buyer
+activecolor #red
+participant Restaurant
+activecolor Restaurant #blue
+participant Kitchen
+activecolor Kitchen #yellow
+actor Delivery Boy
+activecolor Delivery Boy #white
+
+activate Buyer
+Buyer->Restaurant:Order Food
+activate Restaurant
+Restaurant->>Kitchen:Order Preparation
+
+activate Kitchen
+Restaurant<--Kitchen:Preparation complete
+deactivate Kitchen
+Restaurant->>Delivery Boy :Assign nearest boy
+activate Delivery Boy
+Buyer->Delivery Boy: Track location on
+Buyer<--Delivery Boy:Deliver order
+deactivate Delivery Boy
+Buyer->Restaurant:Notify
+deactivate Buyer
+
+
