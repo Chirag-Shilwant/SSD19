@@ -1,5 +1,5 @@
 
-alertify.confirm("Message<br>dakjfb").set('resizable',true).resizeTo('50%',500).setHeader('Instructions');
+alertify.confirm("Simulation of class diagram:<br><br>1. The entire page is divided into 2 parts. The left part consists of the attributes, methods list whereas the right part has a template of class diagram wherein there are multiple classes.<br> <br>2. The goal here is to map appropriate attributes/methods to the correct classes, i.e. drag the items from the left and drop it in right boxes.<br><br>3. You can hover over the classes/arrows to get insight of what the those are all about.").set('resizable',true).resizeTo('50%',350).setHeader('Instructions');
 
 var dropTarget = document.querySelector(".wrapper");
 var draggables = document.querySelectorAll(".task");
@@ -74,6 +74,77 @@ e.onmouseout = function() {
   document.getElementById('popup5').style.display = 'none';
 }
 
+var e = document.getElementById('class1_1');
+e.onmouseover = function() {
+  document.getElementById('popup6').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup6').style.display = 'none';
+}
+
+var e = document.getElementById('class2_1');
+e.onmouseover = function() {
+  document.getElementById('popup7').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup7').style.display = 'none';
+}
+
+var e = document.getElementById('class3_1');
+e.onmouseover = function() {
+  document.getElementById('popup8').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup8').style.display = 'none';
+}
+
+var e = document.getElementById('class4_1');
+e.onmouseover = function() {
+  document.getElementById('popup9').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup9').style.display = 'none';
+}
+
+var e = document.getElementById('class5_1');
+e.onmouseover = function() {
+  document.getElementById('popup10').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup10').style.display = 'none';
+}
+
+var e = document.getElementById('arrow_design1');
+e.onmouseover = function() {
+  document.getElementById('popup11').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup11').style.display = 'none';
+}
+
+var e = document.getElementById('arrow_design2');
+e.onmouseover = function() {
+  document.getElementById('popup14').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup14').style.display = 'none';
+}
+
+var e = document.getElementById('arrow_design3');
+e.onmouseover = function() {
+  document.getElementById('popup12').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup12').style.display = 'none';
+}
+
+var e = document.getElementById('arrow_design4');
+e.onmouseover = function() {
+  document.getElementById('popup13').style.display = 'block';
+}
+e.onmouseout = function() {
+  document.getElementById('popup13').style.display = 'none';
+}
 
 
 /*
